@@ -1,0 +1,56 @@
+networks:
+  healthcheck:
+    name: healthcheck
+  proxy:
+    name: proxy
+    external: true
+
+volumes:
+  database:
+    driver: local
+
+services:
+  core:
+    image: codeberg.org/healthcheck/healthcheck-core:latest
+    restart: unless-stopped
+    volumes:
+      - database:/database
+    environment:
+      DATABASE_URL: /database/healthcheck.db
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+      - "com.centurylinklabs.watchtower.scope=healthcheck"
+      - "traefik.enable=true"
+      - "traefik.http.routers.core.rule=Host(`healthcheck.help`)"
+      - "traefik.http.routers.core.entrypoints=http,https"
+      - "traefik.http.middlewares.redirect-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.redirect-https.redirectscheme.permanent=true"
+      - "traefik.http.routers.core.middlewares=redirect-https"
+      - "traefik.http.routers.core.tls=true"
+      - "traefik.http.routers.core.tls.certresolver=letsencrypt"
+      - "traefik.http.services.core.loadbalancer.server.port=3000"
+    networks:
+      - proxy
+      - healthcheck
+
+  watchtower:
+    image: docker.io/nickfedor/watchtower:1.16.1
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      WATCHTOWER_LABEL_ENABLE: "true"
+      WATCHTOWER_HTTP_API_UPDATE: "true"
+      WATCHTOWER_HTTP_API_TOKEN: ${WATCHTOWER_TOKEN}
+      WATCHTOWER_SCOPE: "healthcheck"
+      WATCHTOWER_INCLUDE_STOPPED: "true"
+      WATCHTOWER_REVIVE_STOPPED: "true"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.watchtower.rule=Host(`watchtower.healthcheck.help`)"
+      - "traefik.http.routers.watchtower.entrypoints=https"
+      - "traefik.http.routers.watchtower.tls=true"
+      - "traefik.http.routers.watchtower.tls.certresolver=letsencrypt"
+      - "traefik.http.services.watchtower.loadbalancer.server.port=8080"
+    networks:
+      - proxy

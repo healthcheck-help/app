@@ -1,0 +1,86 @@
+@import "@fontsource-variable/readex-pro/wght.css";
+@import "@fontsource-variable/fraunces/wght.css";
+@import "./variables.css";
+
+html {
+  height: 100%;
+  font-size: var(--size-font-base);
+}
+
+body {
+  font-family: "Readex Pro Variable", sans-serif;
+  min-height: 100%;
+  margin: 0;
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+#title {
+  font-family: "Fraunces Variable", serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.page-padding {
+  padding-inline: var(--size-page-padding);
+}
+
+.page-margin {
+  margin-inline: var(--size-page-padding);
+}
+
+button,
+[role="button"] {
+  padding: 0.25em 0.61em;
+  background-color: var(--color-primary-160);
+  border: 0.1em solid var(--color-primary-120);
+  border-radius: 0.3em;
+  transition: 0.3s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.61em;
+  font-size: 1em;
+
+  &.rounded {
+    border-radius: 9999px;
+  }
+
+  &:hover,
+  &[data-state="open"] {
+    background-color: var(--color-primary-180);
+  }
+}
+
+*::selection {
+  background-color: var(--color-primary-120);
+  color: var(--color-white);
+}
+
+*:focus-visible {
+  outline: 3px solid var(--color-primary-160);
+  outline-offset: 3px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  input {
+    display: block;
+    margin-block: 0.25em;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

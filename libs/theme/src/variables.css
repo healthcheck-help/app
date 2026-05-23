@@ -1,0 +1,34 @@
+:root {
+  --color-primary: #0d2a42;
+  --color-secondary: #469bac;
+  --color-red: #f0185c;
+  --color-orange: #fc8a08;
+  --color-green: #6bd731;
+
+  --size-border-radius: 0.3em;
+  --size-font-base: 16px;
+  --size-page-padding: calc((100% - 1440px) / 2);
+
+  /* Derived colors */
+
+  --color-white: hsl(from var(--color-primary) h s calc(l + 83));
+  --color-black: hsl(from var(--color-primary) h s calc(l - 10));
+  --color-primary-120: hsl(from var(--color-primary) h s calc(l + 20));
+  --color-primary-140: hsl(from var(--color-primary) h s calc(l + 40));
+  --color-primary-160: hsl(from var(--color-primary) h s calc(l + 60));
+  --color-primary-180: hsl(from var(--color-primary) h s calc(l + 80));
+  --color-secondary-80: hsl(from var(--color-secondary) h s calc(l - 20));
+  --color-secondary-120: hsl(from var(--color-secondary) h s calc(l + 20));
+}
+
+@media (width < 1440px) {
+  :root {
+    --size-page-padding: 1rem;
+  }
+}
+
+@media (width < 1024px) {
+  :root {
+    --size-font-base: 14px;
+  }
+}

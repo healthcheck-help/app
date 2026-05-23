@@ -1,0 +1,27 @@
+import { DEFAULT_LOCALE } from "@healthcheck/i18n";
+import { resolve } from "$app/paths";
+import type { RouteId, RouteParams } from "$app/types";
+
+type LocaleParams = { locale?: string };
+type LocaleOptionalOnlyRouteId = {
+  [R in RouteId]: Exclude<keyof RouteParams<R>, "locale"> extends never ? R : never;
+}[RouteId];
+type LocalizedRouteId = Extract<LocaleOptionalOnlyRouteId, `/[[locale=locale]]${string}`>;
+type LocalizedSuffix<T extends string> = T extends "/[[locale=locale]]"
+  ? ""
+  : T extends `/[[locale=locale]]${infer Suffix}` ? Suffix : never;
+type StripGroups<T extends string> =
+  T extends `${infer A}(${string})/${infer B}` ? StripGroups<`${A}${B}`>
+  : T extends `${string}(${string})${string}` ? never
+  : T;
+
+export type LocalizedPath = "/" | Exclude<StripGroups<LocalizedSuffix<LocalizedRouteId>>, "">;
+
+export function resolveWithLocale(path: LocalizedPath, params?: LocaleParams): string {
+  const locale = params?.locale;
+  const suffix = path === "/" ? "" : path;
+  if (!locale || locale === DEFAULT_LOCALE) {
+    return resolve(suffix || "/");
+  }
+  return resolve(`/${locale}${suffix}`);
+}

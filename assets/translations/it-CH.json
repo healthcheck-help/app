@@ -1,0 +1,49 @@
+{
+  "layout": {
+    "title": "healthcheck.help",
+    "pageTitle": "healthcheck.help - Come chiedere ai tuoi container: «Tutto bene?»",
+    "description": "Come chiedere ai tuoi container: «Tutto bene?» — monitora e gestisci i tuoi healthcheck dei container con facilità.",
+    "keywords": "healthcheck, container, docker, monitoraggio, devops, verifica di salute",
+    "author": "Robin Bühler"
+  },
+  "home": {
+    "title": "Benvenuto su healthcheck.help"
+  },
+  "footer": {
+    "version": "Versione"
+  },
+  "log-in": {
+    "title": "Accedi",
+    "localProviderTitle": "Con un account locale",
+    "externalProviderTitle": "Con un provider di identità esterno",
+    "registerTitle": "Registra un account locale",
+    "description": "Accedi al tuo account",
+    "loginFailedTitle": "Accesso fallito",
+    "registerButtonLabel": "Registrati",
+    "logInButtonLabel": "Accedi",
+    "continueWithGoogleLabel": "Continua con Google"
+  },
+  "register": {
+    "title": "Registrati",
+    "description": "Crea un nuovo account",
+    "registerFailedTitle": "Registrazione fallita",
+    "registerButtonLabel": "Registrati"
+  },
+  "profile": {
+    "title": "Profilo",
+    "personalInfoTitle": "Informazioni personali",
+    "nameLabel": "Nome",
+    "emailLabel": "E-mail",
+    "emailHint": "L'e-mail non può essere modificata per gli account collegati a un provider esterno.",
+    "saveButtonLabel": "Salva modifiche",
+    "updateSuccessTitle": "Profilo aggiornato",
+    "updateSuccessMessage": "Il tuo profilo è stato aggiornato con successo.",
+    "updateFailedTitle": "Aggiornamento fallito",
+    "dangerZoneTitle": "Zona pericolo",
+    "terminateButtonLabel": "Termina account",
+    "terminateConfirmMessage": "Sei sicuro/a? Questa azione è irreversibile e cancellerà definitivamente il tuo account e tutti i dati associati.",
+    "terminateConfirmButtonLabel": "Sì, elimina definitivamente il mio account",
+    "cancelButtonLabel": "Annulla",
+    "deleteFailedTitle": "Eliminazione fallita"
+  }
+}

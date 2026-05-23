@@ -1,0 +1,11 @@
+{
+  "name": "@healthcheck/i18n",
+  "version": "0.0.1",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "imports": {
+    "@nanostores/i18n": "npm:@nanostores/i18n@^1.3.3",
+    "nanostores": "npm:nanostores@^0.11.0"
+  }
+}

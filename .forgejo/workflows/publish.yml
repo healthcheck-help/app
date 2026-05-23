@@ -1,0 +1,202 @@
+name: Publish
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: srv-obin-ch_ubuntu-latest
+    if: github.event.pull_request.merged == true && github.head_ref ==
+      'changeset-release/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: "2.x"
+
+      - name: Cache dependencies
+        uses: actions/cache@v5
+        with:
+          path: |
+            ~/.deno
+            ~/.cache/deno
+          key: ${{ runner.os }}-deno-${{ hashFiles('deno.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-deno-
+
+      - name: Install dependencies
+        run: deno install
+
+      - name: Create tags
+        uses: https://github.com/changesets/action@v1
+        id: changesets
+        with:
+          publish: deno task tag
+          createGithubReleases: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push tags
+        run: git push --follow-tags
+
+      - name: Plan container images to publish
+        id: images
+        run: |
+          possible_targets=$(git ls-files -- '**/deno.json' \
+            | while read -r f; do dir=$(dirname "$f"); if [ -f "$dir/deno.json" ] && [ "$dir" != "." ]; then jq -r '.name // empty' "$dir/deno.json"; fi; done \
+            | jq -R -s 'split("\n") | map(select(length>0))')
+          published_packages='${{ steps.changesets.outputs.publishedPackages }}'
+          targets=$(echo "$published_packages" | jq -c --argjson possible_targets "$possible_targets" '[.[] | select(.name as $n | $possible_targets | index($n))]')
+          echo "images=$targets" >> $GITHUB_OUTPUT
+          echo "Published packages: $published_packages"
+          echo "Possible targets: $possible_targets"
+          echo "Images to build: $targets"
+    outputs:
+      published: ${{ steps.changesets.outputs.published }}
+      publishedPackages: ${{ steps.changesets.outputs.publishedPackages }}
+      images: ${{ steps.images.outputs.images }}
+
+  build-base-image:
+    name: Build base image
+    runs-on: srv-obin-ch_ubuntu-latest
+    needs: publish
+    if: ${{ needs.publish.outputs.published == 'true' }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+        with:
+          driver: docker-container
+          driver-opts: network=host
+
+      - name: Log into registry codeberg.org
+        uses: docker/login-action@v4
+        with:
+          registry: codeberg.org
+          username: ${{ github.actor }}
+          password: ${{ secrets.CONTAINER_REGISTRY_TOKEN }}
+
+      - name: Set base image tag
+        id: set-base-tag
+        run: |
+          TAG="codeberg.org/healthcheck/healthcheck-base:${{ github.sha }}"
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "Building base image with tag: $TAG"
+
+      - name: Build and push base image
+        run: |
+          docker buildx build \
+            --platform linux/arm64 \
+            -f Dockerfile.root \
+            -t ${{ steps.set-base-tag.outputs.tag }} \
+            . \
+            --push
+          echo "Base image built and pushed: ${{ steps.set-base-tag.outputs.tag }}"
+    outputs:
+      baseTag: ${{ steps.set-base-tag.outputs.tag }}
+
+  build-and-publish-images:
+    name: Build and publish images
+    runs-on: srv-obin-ch_ubuntu-latest
+    needs: [ publish, build-base-image ]
+    strategy:
+      matrix:
+        package: ${{ fromJson(needs.publish.outputs.images) }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+        with:
+          driver: docker-container
+          driver-opts: network=host
+
+      - name: Log into registry codeberg.org
+        uses: docker/login-action@v4
+        with:
+          registry: codeberg.org
+          username: ${{ github.actor }}
+          password: ${{ secrets.CONTAINER_REGISTRY_TOKEN }}
+
+      - name: Generate tags
+        id: set-tags
+        run: |
+          VERSION=${{ matrix.package.version }}
+          NAME=${{ matrix.package.name }}
+          MAJOR=$(echo $VERSION | cut -d. -f1)
+          MINOR=$(echo $VERSION | cut -d. -f2)
+          SHORTNAME=$(echo $NAME | cut -d/ -f2)
+          echo "MAJOR=$MAJOR" >> $GITHUB_OUTPUT
+          echo "MINOR=$MINOR" >> $GITHUB_OUTPUT
+          echo "BASENAME=codeberg.org/healthcheck/healthcheck-$SHORTNAME" >> $GITHUB_OUTPUT
+
+      - name: Build and publish image
+        env:
+          BASE_IMAGE: codeberg.org/healthcheck/healthcheck-base:${{ github.sha }}
+          PACKAGE_NAME: ${{ matrix.package.name }}
+          PACKAGE_VERSION: ${{ matrix.package.version }}
+          BASENAME: ${{ steps.set-tags.outputs.BASENAME }}
+          MAJOR: ${{ steps.set-tags.outputs.MAJOR }}
+          MINOR: ${{ steps.set-tags.outputs.MINOR }}
+        run: |
+          set -euo pipefail
+
+          PACKAGE_DIR=$(git ls-files -- '**/deno.json' | while read -r f; do
+            name=$(jq -r '.name // empty' "$f")
+            if [ "$name" = "$PACKAGE_NAME" ]; then
+              dirname "$f"
+            fi
+          done | head -n1)
+
+          if [ -z "$PACKAGE_DIR" ]; then
+            echo "::error::No directory found for $PACKAGE_NAME"
+            exit 1
+          fi
+
+          if [ ! -f "$PACKAGE_DIR/Dockerfile" ]; then
+            echo "::error::No Dockerfile for $PACKAGE_NAME in $PACKAGE_DIR"
+            exit 1
+          fi
+
+          docker buildx build \
+            --platform linux/amd64,linux/arm64 \
+            --build-arg BASE_IMAGE="$BASE_IMAGE" \
+            -t "$BASENAME:latest" \
+            -t "$BASENAME:${{ github.sha }}" \
+            -t "$BASENAME:$PACKAGE_VERSION" \
+            -t "$BASENAME:$MAJOR" \
+            -t "$BASENAME:$MAJOR.$MINOR" \
+            -f "$PACKAGE_DIR/Dockerfile" \
+            "$PACKAGE_DIR" \
+            --push
+
+          echo "Image build & push complete for $PACKAGE_NAME:$PACKAGE_VERSION"
+
+  notify:
+    name: Notify
+    runs-on: srv-obin-ch_ubuntu-latest
+    needs: build-and-publish-images
+    steps:
+      - name: Trigger Watchtower update
+        run: |
+          curl -H "Authorization: Bearer ${{ secrets.WATCHTOWER_TOKEN }}" https://watchtower.healthcheck.help/v1/update --show-error --fail

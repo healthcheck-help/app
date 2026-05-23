@@ -1,0 +1,12 @@
+{
+  "name": "@healthcheck/auth",
+  "version": "0.0.1",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "imports": {
+    "@healthcheck/db": "workspace:*",
+    "@libsql/kysely-libsql": "npm:@libsql/kysely-libsql@^0.4.1",
+    "better-auth": "npm:better-auth@^1.6.9"
+  }
+}

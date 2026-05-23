@@ -1,0 +1,29 @@
+{
+  "name": "healthcheck.help",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "svelte.svelte-vscode",
+        "biomejs.biome",
+        "denoland.vscode-deno",
+        "redhat.vscode-yaml"
+      ]
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {},
+    "ghcr.io/devcontainers-extra/features/deno:1": {}
+  },
+  "forwardPorts": [5001],
+  "portsAttributes": {
+    "5001": {
+      "label": "Development server"
+    }
+  },
+  "containerEnv": {
+    "DO_NOT_TRACK": "1"
+  }
+}

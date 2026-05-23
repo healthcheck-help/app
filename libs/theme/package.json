@@ -1,0 +1,17 @@
+{
+  "name": "@healthcheck/theme",
+  "version": "0.0.1",
+  "type": "module",
+  "peerDependencies": {
+    "svelte": "^5.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js"
+    },
+    "./index.css": {
+      "default": "./dist/index.css"
+    }
+  }
+}

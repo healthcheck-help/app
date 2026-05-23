@@ -1,0 +1,49 @@
+{
+  "layout": {
+    "title": "healthcheck.help",
+    "pageTitle": "healthcheck.help - Comment demander à vos conteneurs: «Tout va bien?»",
+    "description": "Comment demander à vos conteneurs: «Tout va bien?» — surveillez et gérez vos healthchecks de conteneurs facilement.",
+    "keywords": "healthcheck, conteneurs, docker, surveillance, devops, vérification de santé",
+    "author": "Robin Bühler"
+  },
+  "home": {
+    "title": "Bienvenue sur healthcheck.help"
+  },
+  "footer": {
+    "version": "Version"
+  },
+  "log-in": {
+    "title": "Se connecter",
+    "localProviderTitle": "Avec un compte local",
+    "externalProviderTitle": "Avec un fournisseur d'identité externe",
+    "registerTitle": "Créer un compte local",
+    "description": "Connectez-vous à votre compte",
+    "loginFailedTitle": "Échec de la connexion",
+    "registerButtonLabel": "S'inscrire",
+    "logInButtonLabel": "Se connecter",
+    "continueWithGoogleLabel": "Continuer avec Google"
+  },
+  "register": {
+    "title": "S'inscrire",
+    "description": "Créer un nouveau compte",
+    "registerFailedTitle": "Échec de l'inscription",
+    "registerButtonLabel": "S'inscrire"
+  },
+  "profile": {
+    "title": "Profil",
+    "personalInfoTitle": "Informations personnelles",
+    "nameLabel": "Nom",
+    "emailLabel": "E-mail",
+    "emailHint": "L'e-mail ne peut pas être modifié pour les comptes liés à un fournisseur externe.",
+    "saveButtonLabel": "Enregistrer les modifications",
+    "updateSuccessTitle": "Profil mis à jour",
+    "updateSuccessMessage": "Votre profil a été mis à jour avec succès.",
+    "updateFailedTitle": "Échec de la mise à jour",
+    "dangerZoneTitle": "Zone de danger",
+    "terminateButtonLabel": "Supprimer le compte",
+    "terminateConfirmMessage": "Êtes-vous sûr(e)? Cette action est irréversible et supprimera définitivement votre compte et toutes les données associées.",
+    "terminateConfirmButtonLabel": "Oui, supprimer définitivement mon compte",
+    "cancelButtonLabel": "Annuler",
+    "deleteFailedTitle": "Échec de la suppression"
+  }
+}

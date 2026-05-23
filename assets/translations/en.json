@@ -1,0 +1,49 @@
+{
+  "layout": {
+    "title": "healthcheck.help",
+    "pageTitle": "healthcheck.help - How to ask your containers: \"You good?\"",
+    "description": "How to ask your containers: \"You good?\" — monitor and manage your container health checks with ease.",
+    "keywords": "healthcheck, containers, docker, monitoring, devops, health check",
+    "author": "Robin Bühler"
+  },
+  "home": {
+    "title": "Welcome to healthcheck.help"
+  },
+  "footer": {
+    "version": "Version"
+  },
+  "log-in": {
+    "title": "Log in",
+    "localProviderTitle": "Using a local account",
+    "externalProviderTitle": "Using an external identity provider",
+    "registerTitle": "Register a local account",
+    "description": "Log in to your account",
+    "loginFailedTitle": "Log in failed",
+    "registerButtonLabel": "Register",
+    "logInButtonLabel": "Log in",
+    "continueWithGoogleLabel": "Continue with Google"
+  },
+  "register": {
+    "title": "Register",
+    "description": "Create a new account",
+    "registerFailedTitle": "Registration failed",
+    "registerButtonLabel": "Register"
+  },
+  "profile": {
+    "title": "Profile",
+    "personalInfoTitle": "Personal Information",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "emailHint": "Email cannot be changed for accounts linked to an external provider.",
+    "saveButtonLabel": "Save Changes",
+    "updateSuccessTitle": "Profile updated",
+    "updateSuccessMessage": "Your profile has been updated successfully.",
+    "updateFailedTitle": "Update failed",
+    "dangerZoneTitle": "Danger Zone",
+    "terminateButtonLabel": "Terminate Account",
+    "terminateConfirmMessage": "Are you sure? This action is irreversible and will permanently delete your account and all associated data.",
+    "terminateConfirmButtonLabel": "Yes, permanently delete my account",
+    "cancelButtonLabel": "Cancel",
+    "deleteFailedTitle": "Delete failed"
+  }
+}

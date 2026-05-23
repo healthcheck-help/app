@@ -1,0 +1,43 @@
+name: Version
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  version:
+    name: Version
+    runs-on: srv-obin-ch_ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: "2.x"
+
+      - name: Cache dependencies
+        uses: actions/cache@v5
+        with:
+          path: |
+            ~/.deno
+            ~/.cache/deno
+          key: ${{ runner.os }}-deno-${{ hashFiles('deno.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-deno-
+
+      - name: Install dependencies
+        run: deno install
+
+      - name: Create Release Pull Request
+        uses: https://github.com/openscript/changesets-action@v1.8.2
+        id: changesets
+        with:
+          version: deno task version
+          commit: "chore: publish new release"
+          title: "chore: publish new release"
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

@@ -1,0 +1,49 @@
+{
+  "layout": {
+    "title": "healthcheck.help",
+    "pageTitle": "healthcheck.help - Wie fragst du deine Container: «Alles gut?»",
+    "description": "Wie fragst du deine Container: «Alles gut?» — überwache und verwalte deine Container-Healthchecks ganz einfach.",
+    "keywords": "healthcheck, container, docker, monitoring, devops, gesundheitsprüfung",
+    "author": "Robin Bühler"
+  },
+  "home": {
+    "title": "Willkommen bei healthcheck.help"
+  },
+  "footer": {
+    "version": "Version"
+  },
+  "log-in": {
+    "title": "Anmelden",
+    "localProviderTitle": "Mit einem lokalen Konto",
+    "externalProviderTitle": "Mit einem externen Identitätsanbieter",
+    "registerTitle": "Lokales Konto registrieren",
+    "description": "Melde dich bei deinem Konto an",
+    "loginFailedTitle": "Anmeldung fehlgeschlagen",
+    "registerButtonLabel": "Registrieren",
+    "logInButtonLabel": "Anmelden",
+    "continueWithGoogleLabel": "Mit Google fortfahren"
+  },
+  "register": {
+    "title": "Registrieren",
+    "description": "Erstelle ein neues Konto",
+    "registerFailedTitle": "Registrierung fehlgeschlagen",
+    "registerButtonLabel": "Registrieren"
+  },
+  "profile": {
+    "title": "Profil",
+    "personalInfoTitle": "Persönliche Angaben",
+    "nameLabel": "Name",
+    "emailLabel": "E-Mail",
+    "emailHint": "Die E-Mail-Adresse kann bei Konten, die mit einem externen Anbieter verknüpft sind, nicht geändert werden.",
+    "saveButtonLabel": "Änderungen speichern",
+    "updateSuccessTitle": "Profil aktualisiert",
+    "updateSuccessMessage": "Dein Profil wurde erfolgreich aktualisiert.",
+    "updateFailedTitle": "Aktualisierung fehlgeschlagen",
+    "dangerZoneTitle": "Gefahrenbereich",
+    "terminateButtonLabel": "Konto kündigen",
+    "terminateConfirmMessage": "Bist du sicher? Diese Aktion ist unwiderruflich und löscht dein Konto und alle zugehörigen Daten dauerhaft.",
+    "terminateConfirmButtonLabel": "Ja, mein Konto dauerhaft löschen",
+    "cancelButtonLabel": "Abbrechen",
+    "deleteFailedTitle": "Löschen fehlgeschlagen"
+  }
+}
