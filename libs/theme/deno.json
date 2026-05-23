@@ -7,13 +7,8 @@
     "check-types": "svelte-check --tsconfig ./tsconfig.json"
   },
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "svelte": "./dist/index.js"
-    },
-    "./index.css": {
-      "default": "./dist/index.css"
-    }
+    ".": "./src/index.ts",
+    "./index.css": "./src/index.css"
   },
   "imports": {
     "svelte": "npm:svelte@^5.0.0",

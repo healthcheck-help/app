@@ -1,8 +1,8 @@
 import { svelte } from "@sveltejs/vite-plugin-svelte";
+import Icons from "unplugin-icons/vite";
 import { defineConfig } from "vite";
-import { sharedPlugins } from "../../shared/vite.config.base";
 
 export default defineConfig({
   clearScreen: false,
-  plugins: [svelte(), ...sharedPlugins],
+  plugins: [svelte(), Icons({ compiler: "svelte" })],
 });

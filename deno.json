@@ -1,6 +1,5 @@
 {
   "nodeModulesDir": "auto",
-  "workspace": ["./apps/*", "./libs/*"],
   "tasks": {
     "build": "deno task -f @healthcheck/theme build && deno task -f @healthcheck/core build",
     "dev": "deno task -f @healthcheck/theme build && (deno task -f @healthcheck/theme dev & deno task -f @healthcheck/core dev)",
@@ -18,7 +17,8 @@
     "@biomejs/biome": "npm:@biomejs/biome@^2.4.14",
     "@changesets/cli": "npm:@changesets/cli@^2.31.0",
     "@iconify-json/tabler": "npm:@iconify-json/tabler@^1.2.34",
-    "@types/node": "npm:@types/node@^25.6.2"
+    "@types/node": "npm:@types/node@^25.6.2",
+    "unplugin-icons": "npm:unplugin-icons@^23.0.1"
   },
   "allowScripts": [
     "npm:esbuild@0.18.20",

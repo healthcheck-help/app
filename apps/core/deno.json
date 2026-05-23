@@ -28,8 +28,6 @@
     "svelte": "npm:svelte@^5.55.5",
     "svelte-check": "npm:svelte-check@^4.4.8",
     "typescript": "npm:typescript@^6.0.3",
-    "unplugin-icons": "npm:unplugin-icons@^23.0.1",
-    "vite": "npm:vite@^8.0.11",
-    "vite-plugin-devtools-json": "npm:vite-plugin-devtools-json@^1.0.0"
+    "vite": "npm:vite@^8.0.11"
   }
 }
