@@ -38,6 +38,10 @@ export default defineConfig({
         replacement: resolve("../../libs/auth/src/index.ts"),
       },
       {
+        find: "@healthcheck/db/schema",
+        replacement: resolve("../../libs/db/src/db/schema.ts"),
+      },
+      {
         find: "@healthcheck/db",
         replacement: resolve("../../libs/db/src/index.ts"),
       },

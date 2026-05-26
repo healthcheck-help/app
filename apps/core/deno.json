@@ -27,6 +27,7 @@
     "@sveltejs/vite-plugin-svelte": "npm:@sveltejs/vite-plugin-svelte@^7.1.2",
     "svelte": "npm:svelte@^5.55.5",
     "svelte-check": "npm:svelte-check@^4.4.8",
+    "nanostores": "npm:nanostores@^0.11.0",
     "typescript": "npm:typescript@^6.0.3",
     "vite": "npm:vite@^8.0.11"
   }
