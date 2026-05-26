@@ -6,3 +6,7 @@
 1. Open the project in the Dev Container and run `deno task dev`
 1. Set environment variables in `apps/core/.env` (see `.env.example` for reference)
 1. Run tests with `deno task test`
+
+## Upgrade dependencies
+
+1. Run `deno outdated -r -i -u` to see which dependencies are outdated and select the ones you want to update
