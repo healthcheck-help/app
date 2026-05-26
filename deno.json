@@ -14,10 +14,10 @@
     "changeset": "changeset"
   },
   "imports": {
-    "@biomejs/biome": "npm:@biomejs/biome@^2.4.14",
+    "@biomejs/biome": "npm:@biomejs/biome@^2.4.15",
     "@changesets/cli": "npm:@changesets/cli@^2.31.0",
-    "@iconify-json/tabler": "npm:@iconify-json/tabler@^1.2.34",
-    "@types/node": "npm:@types/node@^25.6.2",
+    "@iconify-json/tabler": "npm:@iconify-json/tabler@^1.2.35",
+    "@types/node": "npm:@types/node@^25.9.1",
     "unplugin-icons": "npm:unplugin-icons@^23.0.1"
   },
   "allowScripts": [
