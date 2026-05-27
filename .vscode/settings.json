@@ -23,6 +23,7 @@
     "editor.defaultFormatter": "biomejs.biome"
   },
   "deno.enable": true,
+  "deno.disablePaths": ["./apps/core"],
   "deno.lint": true,
   "json.schemaDownload.trustedDomains": {
     "https://biomejs.dev": true,
