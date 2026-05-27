@@ -1,9 +1,15 @@
 import { createI18n, formatter, type Messages } from "@nanostores/i18n";
 import { atom } from "nanostores";
-import deCH from "../../../assets/translations/de-CH.json" with { type: "json" };
+import deCH from "../../../assets/translations/de-CH.json" with {
+  type: "json",
+};
 import enCH from "../../../assets/translations/en.json" with { type: "json" };
-import frCH from "../../../assets/translations/fr-CH.json" with { type: "json" };
-import itCH from "../../../assets/translations/it-CH.json" with { type: "json" };
+import frCH from "../../../assets/translations/fr-CH.json" with {
+  type: "json",
+};
+import itCH from "../../../assets/translations/it-CH.json" with {
+  type: "json",
+};
 import { DEFAULT_LOCALE } from "./constants.ts";
 
 type LocaleMessages = Record<string, Record<string, string>>;

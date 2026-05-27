@@ -9,7 +9,9 @@ function getPathWithoutLocale(pathname: string): string {
   const segments = pathname.split("/").filter(Boolean);
   if (
     segments.length > 0 &&
-    SUPPORTED_LOCALES.includes(segments[0] as (typeof SUPPORTED_LOCALES)[number])
+    SUPPORTED_LOCALES.includes(
+      segments[0] as (typeof SUPPORTED_LOCALES)[number],
+    )
   ) {
     return `/${segments.slice(1).join("/")}` || "/";
   }
@@ -20,7 +22,9 @@ function getLocaleFromPath(pathname: string): string {
   const segments = pathname.split("/").filter(Boolean);
   if (
     segments.length > 0 &&
-    SUPPORTED_LOCALES.includes(segments[0] as (typeof SUPPORTED_LOCALES)[number])
+    SUPPORTED_LOCALES.includes(
+      segments[0] as (typeof SUPPORTED_LOCALES)[number],
+    )
   ) {
     return segments[0];
   }

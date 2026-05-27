@@ -1,5 +1,12 @@
 {
   "nodeModulesDir": "auto",
+  "workspace": [
+    "./apps/core",
+    "./libs/auth",
+    "./libs/db",
+    "./libs/i18n",
+    "./libs/theme"
+  ],
   "tasks": {
     "build": "deno task -f @healthcheck/theme build && deno task -f @healthcheck/core build",
     "dev": "deno task -f @healthcheck/theme build && (deno task -f @healthcheck/theme dev & deno task -f @healthcheck/core dev)",

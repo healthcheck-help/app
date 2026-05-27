@@ -1,10 +1,14 @@
 import { expect, test } from "@playwright/test";
 
-test("keeps selected locale when navigating back to home via logo", async ({ page }) => {
+test("keeps selected locale when navigating back to home via logo", async ({
+  page,
+}) => {
   await page.goto("/de-CH/log-in");
   await expect(page).toHaveURL(/\/de-CH\/log-in/);
 
-  const languageSwitcher = page.locator('nav[aria-label="Language selection"] [data-select-trigger]');
+  const languageSwitcher = page.locator(
+    'nav[aria-label="Language selection"] [data-select-trigger]',
+  );
   await languageSwitcher.click();
   await languageSwitcher.press("Home");
   await languageSwitcher.press("ArrowDown");
