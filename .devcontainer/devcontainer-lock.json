@@ -1,10 +1,5 @@
 {
   "features": {
-    "ghcr.io/devcontainers-extra/features/deno:1": {
-      "version": "1.0.4",
-      "resolved": "ghcr.io/devcontainers-extra/features/deno@sha256:7013bf7726828a33579604fe1aa5c36a253b578d5991e55800b418b56fd2cca5",
-      "integrity": "sha256:7013bf7726828a33579604fe1aa5c36a253b578d5991e55800b418b56fd2cca5"
-    },
     "ghcr.io/devcontainers/features/desktop-lite:1": {
       "version": "1.2.9",
       "resolved": "ghcr.io/devcontainers/features/desktop-lite@sha256:d8649bc8ca8e50a52fbee29d281739ea05dc1022905b185434d6bbe9afc8f221",

@@ -22,7 +22,7 @@ jobs:
       - name: Set up Deno
         uses: https://github.com/denoland/setup-deno@v2
         with:
-          deno-version: "2.x"
+          deno-version-file: .tool-versions
 
       - name: Cache dependencies
         uses: actions/cache@v5
@@ -99,8 +99,10 @@ jobs:
 
       - name: Build and push base image
         run: |
+          DENO_VERSION=$(awk '/^deno/{print $2}' .tool-versions)
           docker buildx build \
             --platform linux/arm64 \
+            --build-arg DENO_VERSION="${DENO_VERSION}" \
             -f Dockerfile.root \
             -t ${{ steps.set-base-tag.outputs.tag }} \
             . \
