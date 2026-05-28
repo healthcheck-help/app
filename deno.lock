@@ -7,7 +7,7 @@
     "npm:@fontsource-variable/fraunces@^5.2.9": "5.2.9",
     "npm:@fontsource-variable/readex-pro@^5.2.11": "5.2.11",
     "npm:@iconify-json/tabler@^1.2.35": "1.2.35",
-    "npm:@libsql/client@~0.15.15": "0.15.15",
+    "npm:@libsql/client@0.17": "0.17.3",
     "npm:@libsql/kysely-libsql@~0.4.1": "0.4.1_kysely@0.28.17",
     "npm:@nanostores/i18n@^1.3.3": "1.3.3_nanostores@0.11.4",
     "npm:@playwright/test@^1.60.0": "1.60.0",
@@ -17,10 +17,10 @@
     "npm:@sveltejs/package@^2.5.7": "2.5.7_svelte@5.55.9_typescript@6.0.3",
     "npm:@sveltejs/vite-plugin-svelte@^7.1.2": "7.1.2_svelte@5.55.9_vite@8.0.14__@types+node@25.9.1_@types+node@25.9.1",
     "npm:@types/node@^25.9.1": "25.9.1",
-    "npm:better-auth@^1.6.11": "1.6.11_@sveltejs+kit@2.61.1__@sveltejs+vite-plugin-svelte@7.1.2___svelte@5.55.9___vite@8.0.14____@types+node@25.9.1___@types+node@25.9.1__svelte@5.55.9__typescript@6.0.3__vite@8.0.14___@types+node@25.9.1_drizzle-kit@0.31.10_drizzle-orm@0.45.2__@libsql+client@0.15.15__kysely@0.28.17_svelte@5.55.9_@sveltejs+vite-plugin-svelte@7.1.2__svelte@5.55.9__vite@8.0.14___@types+node@25.9.1__@types+node@25.9.1_typescript@6.0.3_vite@8.0.14__@types+node@25.9.1",
+    "npm:better-auth@^1.6.11": "1.6.11_@sveltejs+kit@2.61.1__@sveltejs+vite-plugin-svelte@7.1.2___svelte@5.55.9___vite@8.0.14____@types+node@25.9.1___@types+node@25.9.1__svelte@5.55.9__typescript@6.0.3__vite@8.0.14___@types+node@25.9.1_drizzle-kit@0.31.10_drizzle-orm@0.45.2__@libsql+client@0.17.3__kysely@0.28.17_svelte@5.55.9_@libsql+client@0.17.3",
     "npm:bits-ui@^2.18.1": "2.18.1_svelte@5.55.9_@sveltejs+kit@2.61.1__@sveltejs+vite-plugin-svelte@7.1.2___svelte@5.55.9___vite@8.0.14____@types+node@25.9.1___@types+node@25.9.1__svelte@5.55.9__typescript@6.0.3__vite@8.0.14___@types+node@25.9.1_@sveltejs+vite-plugin-svelte@7.1.2__svelte@5.55.9__vite@8.0.14___@types+node@25.9.1__@types+node@25.9.1_typescript@6.0.3_vite@8.0.14__@types+node@25.9.1",
     "npm:drizzle-kit@~0.31.10": "0.31.10",
-    "npm:drizzle-orm@~0.45.2": "0.45.2_@libsql+client@0.15.15_kysely@0.28.17",
+    "npm:drizzle-orm@~0.45.2": "0.45.2_@libsql+client@0.17.3_kysely@0.28.17",
     "npm:nanostores@~0.11.4": "0.11.4",
     "npm:svelte-check@^4.4.8": "4.4.8_svelte@5.55.9_typescript@6.0.3",
     "npm:svelte@^5.55.9": "5.55.9",
@@ -53,7 +53,7 @@
         "zod"
       ]
     },
-    "@better-auth/drizzle-adapter@1.6.11_@better-auth+core@1.6.11__@better-auth+utils@0.4.0__@better-fetch+fetch@1.1.21__better-call@1.3.5___zod@4.4.3__jose@6.2.3__kysely@0.28.17__nanostores@1.3.0_@better-auth+utils@0.4.0_drizzle-orm@0.45.2__@libsql+client@0.15.15__kysely@0.28.17_@better-fetch+fetch@1.1.21_better-call@1.3.5__zod@4.4.3_jose@6.2.3_kysely@0.28.17_nanostores@1.3.0": {
+    "@better-auth/drizzle-adapter@1.6.11_@better-auth+core@1.6.11__@better-auth+utils@0.4.0__@better-fetch+fetch@1.1.21__better-call@1.3.5___zod@4.4.3__jose@6.2.3__kysely@0.28.17__nanostores@1.3.0_@better-auth+utils@0.4.0_drizzle-orm@0.45.2__@libsql+client@0.17.3__kysely@0.28.17_@libsql+client@0.17.3": {
       "integrity": "sha512-4jpkETIGZOHCf7BK4jnu22fdN6jjomH0/HhEzkaWy3+Eppi5PYlHTF/460jrTmA3Xc+Vqwp9t282ymHiEPypGw==",
       "dependencies": [
         "@better-auth/core",
@@ -846,11 +846,11 @@
         "@jridgewell/sourcemap-codec"
       ]
     },
-    "@libsql/client@0.15.15": {
-      "integrity": "sha512-twC0hQxPNHPKfeOv3sNT6u2pturQjLcI+CnpTM0SjRpocEGgfiZ7DWKXLNnsothjyJmDqEsBQJ5ztq9Wlu470w==",
+    "@libsql/client@0.17.3": {
+      "integrity": "sha512-HXk9wiAoJbKFbyBH4O+aEhN6ir5ERXuXvwE5OD2eR4/5RUa3Pw/8L9zrnVdU+iNJitRvisPWaIwmhkO3bH7giA==",
       "dependencies": [
-        "@libsql/core@0.15.15",
-        "@libsql/hrana-client@0.7.0",
+        "@libsql/core@0.17.3",
+        "@libsql/hrana-client@0.10.0",
         "js-base64",
         "libsql@0.5.29",
         "promise-limit"
@@ -866,8 +866,8 @@
         "promise-limit"
       ]
     },
-    "@libsql/core@0.15.15": {
-      "integrity": "sha512-C88Z6UKl+OyuKKPwz224riz02ih/zHYI3Ho/LAcVOgjsunIRZoBw7fjRfaH9oPMmSNeQfhGklSG2il1URoOIsA==",
+    "@libsql/core@0.17.3": {
+      "integrity": "sha512-2UjK1i7JBkMduJo4WdvvBxMMvVJ31pArBZNONyz/GCJJAH+1UHat2X6vn10S/WpY5fKzIT98WqYFl2vzWRLOfg==",
       "dependencies": [
         "js-base64"
       ]
@@ -898,19 +898,17 @@
       "os": ["darwin"],
       "cpu": ["x64"]
     },
+    "@libsql/hrana-client@0.10.0": {
+      "integrity": "sha512-OoA4EMqRAC7kn7V2P6EQqRcpZf2W+AjsNIyCizBg339Tq/aMC7sRnzs3SklderhmQWAqEzvv8A2vhxVmWpkVvw==",
+      "dependencies": [
+        "@libsql/isomorphic-ws",
+        "js-base64"
+      ]
+    },
     "@libsql/hrana-client@0.6.2": {
       "integrity": "sha512-MWxgD7mXLNf9FXXiM0bc90wCjZSpErWKr5mGza7ERy2FJNNMXd7JIOv+DepBA1FQTIfI8TFO4/QDYgaQC0goNw==",
       "dependencies": [
-        "@libsql/isomorphic-fetch@0.2.5",
-        "@libsql/isomorphic-ws",
-        "js-base64",
-        "node-fetch"
-      ]
-    },
-    "@libsql/hrana-client@0.7.0": {
-      "integrity": "sha512-OF8fFQSkbL7vJY9rfuegK1R7sPgQ6kFMkDamiEccNUvieQ+3urzfDFI616oPl8V7T9zRmnTkSjMOImYCAVRVuw==",
-      "dependencies": [
-        "@libsql/isomorphic-fetch@0.3.1",
+        "@libsql/isomorphic-fetch",
         "@libsql/isomorphic-ws",
         "js-base64",
         "node-fetch"
@@ -918,9 +916,6 @@
     },
     "@libsql/isomorphic-fetch@0.2.5": {
       "integrity": "sha512-8s/B2TClEHms2yb+JGpsVRTPBfy1ih/Pq6h6gvyaNcYnMVJvgQRY7wAa8U2nD0dppbCuDU5evTNMEhrQ17ZKKg=="
-    },
-    "@libsql/isomorphic-fetch@0.3.1": {
-      "integrity": "sha512-6kK3SUK5Uu56zPq/Las620n5aS9xJq+jMBcNSOmjhNf/MUvdyji4vrMTqD7ptY7/4/CAVEAYDeotUz60LNQHtw=="
     },
     "@libsql/isomorphic-ws@0.1.5": {
       "integrity": "sha512-DtLWIH29onUYR00i0GlQ3UdcTRC6EP4u9w/h9LxpUZJWRMARk6dQwZ6Jkd+QdwVpuAOrdxt18v0K2uIYR3fwFg==",
@@ -1474,7 +1469,7 @@
     "axobject-query@4.1.0": {
       "integrity": "sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ=="
     },
-    "better-auth@1.6.11_@sveltejs+kit@2.61.1__@sveltejs+vite-plugin-svelte@7.1.2___svelte@5.55.9___vite@8.0.14____@types+node@25.9.1___@types+node@25.9.1__svelte@5.55.9__typescript@6.0.3__vite@8.0.14___@types+node@25.9.1_drizzle-kit@0.31.10_drizzle-orm@0.45.2__@libsql+client@0.15.15__kysely@0.28.17_svelte@5.55.9_@sveltejs+vite-plugin-svelte@7.1.2__svelte@5.55.9__vite@8.0.14___@types+node@25.9.1__@types+node@25.9.1_typescript@6.0.3_vite@8.0.14__@types+node@25.9.1": {
+    "better-auth@1.6.11_@sveltejs+kit@2.61.1__@sveltejs+vite-plugin-svelte@7.1.2___svelte@5.55.9___vite@8.0.14____@types+node@25.9.1___@types+node@25.9.1__svelte@5.55.9__typescript@6.0.3__vite@8.0.14___@types+node@25.9.1_drizzle-kit@0.31.10_drizzle-orm@0.45.2__@libsql+client@0.17.3__kysely@0.28.17_svelte@5.55.9_@libsql+client@0.17.3": {
       "integrity": "sha512-Wwt6+q07dwIhsp6XiM7L1qSXVUWBEtNl+eZvwM778CguFqDZFBN9Pt6LtFaHl55t8Z+Zc//5kxcbgDY8/79vFQ==",
       "dependencies": [
         "@better-auth/core",
@@ -1692,14 +1687,14 @@
       ],
       "bin": true
     },
-    "drizzle-orm@0.45.2_@libsql+client@0.15.15_kysely@0.28.17": {
+    "drizzle-orm@0.45.2_@libsql+client@0.17.3_kysely@0.28.17": {
       "integrity": "sha512-kY0BSaTNYWnoDMVoyY8uxmyHjpJW1geOmBMdSSicKo9CIIWkSxMIj2rkeSR51b8KAPB7m+qysjuHme5nKP+E5Q==",
       "dependencies": [
-        "@libsql/client@0.15.15",
+        "@libsql/client@0.17.3",
         "kysely"
       ],
       "optionalPeers": [
-        "@libsql/client@0.15.15",
+        "@libsql/client@0.17.3",
         "kysely"
       ]
     },
@@ -2767,7 +2762,7 @@
         "dependencies": [
           "npm:@deno/svelte-adapter@~0.1.1",
           "npm:@iconify-json/tabler@^1.2.35",
-          "npm:@libsql/client@~0.15.15",
+          "npm:@libsql/client@0.17",
           "npm:@libsql/kysely-libsql@~0.4.1",
           "npm:@nanostores/i18n@^1.3.3",
           "npm:@playwright/test@^1.60.0",
@@ -2793,7 +2788,7 @@
       },
       "libs/db": {
         "dependencies": [
-          "npm:@libsql/client@~0.15.15",
+          "npm:@libsql/client@0.17",
           "npm:drizzle-kit@~0.31.10",
           "npm:drizzle-orm@~0.45.2"
         ]
