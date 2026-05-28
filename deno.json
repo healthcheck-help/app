@@ -10,7 +10,7 @@
   "tasks": {
     "build": "deno task -f @healthcheck/theme build && deno task -f @healthcheck/core build",
     "dev": "deno task -f @healthcheck/theme build && (deno task -f @healthcheck/theme dev & deno task -f @healthcheck/core dev)",
-    "upgrade": "deno outdated --update",
+    "upgrade": "deno outdated -u -r -i --latest",
     "lint": "biome lint .",
     "check": "biome check .",
     "check:fix": "biome check --fix .",
@@ -21,7 +21,7 @@
     "changeset": "changeset"
   },
   "imports": {
-    "@biomejs/biome": "npm:@biomejs/biome@^2.4.15",
+    "@biomejs/biome": "npm:@biomejs/biome@^2.4.16",
     "@changesets/cli": "npm:@changesets/cli@^2.31.0",
     "@iconify-json/tabler": "npm:@iconify-json/tabler@^1.2.35",
     "@types/node": "npm:@types/node@^25.9.1",
