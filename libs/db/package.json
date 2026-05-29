@@ -1,6 +1,6 @@
 {
   "name": "@healthcheck/db",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "exports": {
     ".": "./src/index.ts",
     "./schema": "./src/db/schema.ts",
