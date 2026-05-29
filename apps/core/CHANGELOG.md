@@ -1,5 +1,11 @@
 # @healthcheck/core
 
+## 0.0.5
+
+### Patch Changes
+
+- 6e39d8d: Pass DENO_VERSION to Dockerfile
+
 ## 0.0.4
 
 ### Patch Changes
