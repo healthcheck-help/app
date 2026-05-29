@@ -1,4 +1,4 @@
-ARG DENO_VERSION
+ARG DENO_VERSION=2.8.1
 FROM docker.io/denoland/deno:${DENO_VERSION} AS base
 WORKDIR /usr/src/app
 
