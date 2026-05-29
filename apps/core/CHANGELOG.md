@@ -1,5 +1,11 @@
 # @healthcheck/core
 
+## 0.0.11
+
+### Patch Changes
+
+- b551a33: Enhance build server
+
 ## 0.0.10
 
 ### Patch Changes
