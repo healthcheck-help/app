@@ -180,9 +180,12 @@ jobs:
             exit 1
           fi
 
+          DENO_VERSION=$(awk '/^deno/{print $2}' .tool-versions)
+
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
             --build-arg BASE_IMAGE="$BASE_IMAGE" \
+            --build-arg DENO_VERSION="$DENO_VERSION" \
             -t "$BASENAME:latest" \
             -t "$BASENAME:${{ github.sha }}" \
             -t "$BASENAME:$PACKAGE_VERSION" \

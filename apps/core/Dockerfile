@@ -3,7 +3,8 @@ ARG BUILDER_FROM_PLATFORM=linux/arm64
 
 FROM --platform=$BUILDER_FROM_PLATFORM ${BASE_IMAGE} AS builder
 
-FROM denoland/deno:2 AS base
+ARG DENO_VERSION
+FROM docker.io/denoland/deno:${DENO_VERSION} AS base
 WORKDIR /usr/src/app
 
 FROM base AS release
