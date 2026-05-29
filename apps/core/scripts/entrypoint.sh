@@ -12,5 +12,5 @@ if [ "$1" = "migrate" ]; then
   exec su deno -c "deno run --allow-all /usr/src/app/scripts/migrate.ts"
 else
   echo "Starting server..."
-  exec su deno -c "deno run --allow-all /usr/src/app/dist/index.js"
+  exec su deno -c "deno run --allow-all /usr/src/app/dist/server.ts"
 fi

@@ -8,7 +8,7 @@ FROM docker.io/denoland/deno:${DENO_VERSION} AS base
 WORKDIR /usr/src/app
 
 FROM base AS release
-COPY --from=builder /usr/src/app/apps/core/dist ./dist
+COPY --from=builder /usr/src/app/apps/core/.deno-deploy ./dist
 COPY --from=builder /usr/src/app/apps/core/scripts ./scripts
 COPY --from=builder /usr/src/app/libs/db/src/db/migrations ./migrations
 COPY --from=builder /usr/src/app/apps/core/scripts/entrypoint.sh ./entrypoint.sh
