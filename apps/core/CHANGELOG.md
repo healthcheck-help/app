@@ -1,5 +1,11 @@
 # @healthcheck/core
 
+## 0.0.9
+
+### Patch Changes
+
+- ac0c912: Enhance migrate script
+
 ## 0.0.8
 
 ### Patch Changes
