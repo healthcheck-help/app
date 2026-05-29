@@ -47,7 +47,7 @@ services:
       - "traefik.http.routers.core.middlewares=redirect-https"
       - "traefik.http.routers.core.tls=true"
       - "traefik.http.routers.core.tls.certresolver=letsencrypt"
-      - "traefik.http.services.core.loadbalancer.server.port=3000"
+      - "traefik.http.services.core.loadbalancer.server.port=8000"
     networks:
       - proxy
       - healthcheck
