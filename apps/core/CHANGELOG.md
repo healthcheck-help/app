@@ -1,5 +1,11 @@
 # @healthcheck/core
 
+## 0.0.6
+
+### Patch Changes
+
+- a48ea69: Move ARG in Dockerfile
+
 ## 0.0.5
 
 ### Patch Changes
