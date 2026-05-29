@@ -10,13 +10,32 @@ volumes:
     driver: local
 
 services:
-  core:
+  core-migrate:
     image: codeberg.org/healthcheck/healthcheck-core:latest
-    restart: unless-stopped
+    restart: no
     volumes:
       - database:/database
     environment:
       DATABASE_URL: /database/healthcheck.db
+    command: ["migrate"]
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+      - "com.centurylinklabs.watchtower.scope=healthcheck"
+    networks:
+      - healthcheck
+
+  core:
+    image: codeberg.org/healthcheck/healthcheck-core:latest
+    restart: unless-stopped
+    depends_on:
+      core-migrate:
+        condition: service_completed_successfully
+    volumes:
+      - database:/database
+    environment:
+      DATABASE_URL: /database/healthcheck.db
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET}
+      BETTER_AUTH_URL: https://healthcheck.help
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
       - "com.centurylinklabs.watchtower.scope=healthcheck"
@@ -34,7 +53,7 @@ services:
       - healthcheck
 
   watchtower:
-    image: docker.io/nickfedor/watchtower:1.17.2
+    image: docker.io/nickfedor/watchtower:1.14.2
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
