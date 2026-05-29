@@ -1,5 +1,11 @@
 # @healthcheck/core
 
+## 0.0.10
+
+### Patch Changes
+
+- 4206ed4: Fix core server
+
 ## 0.0.9
 
 ### Patch Changes
