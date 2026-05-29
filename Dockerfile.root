@@ -3,9 +3,7 @@ FROM docker.io/denoland/deno:${DENO_VERSION} AS base
 WORKDIR /usr/src/app
 
 FROM base AS install
-COPY deno.json deno.lock ./
-COPY apps/core/deno.json ./apps/core/deno.json
-COPY libs/*/deno.json ./
+COPY --parents deno.json deno.lock package.json **/deno.json **/package.json ./
 
 RUN --mount=type=cache,target=/deno-dir \
     deno install --frozen

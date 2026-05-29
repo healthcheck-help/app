@@ -33,7 +33,7 @@ jobs:
             ${{ runner.os }}-deno-
 
       - name: Install dependencies
-        run: deno install
+        run: deno install --frozen
 
       - name: Check code
         run: deno task check
@@ -69,7 +69,7 @@ jobs:
             ${{ runner.os }}-deno-
 
       - name: Install dependencies
-        run: deno install
+        run: deno install --frozen
 
       - name: Copy environment variables
         run: cp apps/core/.env.example apps/core/.env.local
