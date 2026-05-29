@@ -9,7 +9,7 @@ fi
 
 if [ "$1" = "migrate" ]; then
   echo "Running database migrations..."
-  exec su deno -c "deno run --allow-all /usr/src/app/scripts/migrate.ts"
+  exec su deno -c "deno run --allow-all /usr/src/app/migrate.js"
 else
   echo "Starting server..."
   exec su deno -c "deno run --allow-all /usr/src/app/dist/server.ts"

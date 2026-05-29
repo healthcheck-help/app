@@ -9,10 +9,12 @@ WORKDIR /usr/src/app
 
 FROM base AS release
 COPY --from=builder /usr/src/app/apps/core/.deno-deploy ./dist
-COPY --from=builder /usr/src/app/apps/core/scripts ./scripts
+COPY --from=builder /usr/src/app/apps/core/.deno-deploy/migrate.js ./migrate.js
 COPY --from=builder /usr/src/app/libs/db/src/db/migrations ./migrations
 COPY --from=builder /usr/src/app/apps/core/scripts/entrypoint.sh ./entrypoint.sh
-RUN chmod +x ./entrypoint.sh
+
+RUN deno install --node-modules-dir=auto --allow-scripts=npm:libsql npm:libsql \
+ && chmod +x ./entrypoint.sh
 
 ENV NODE_ENV=production
 
