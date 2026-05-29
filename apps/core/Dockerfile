@@ -1,9 +1,9 @@
 ARG BASE_IMAGE=scratch
 ARG BUILDER_FROM_PLATFORM=linux/arm64
+ARG DENO_VERSION
 
 FROM --platform=$BUILDER_FROM_PLATFORM ${BASE_IMAGE} AS builder
 
-ARG DENO_VERSION
 FROM docker.io/denoland/deno:${DENO_VERSION} AS base
 WORKDIR /usr/src/app
 
