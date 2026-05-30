@@ -9,8 +9,16 @@
   import Footer from "$lib/layout/Footer.svelte";
   import Header from "$lib/layout/Header.svelte";
   import Main from "$lib/layout/Main.svelte";
+  import { bodyClasses } from "$lib/layout.svelte.js";
 
   const { children, data } = $props();
+
+  $effect(() => {
+    document.body.classList.add(...bodyClasses);
+    return () => {
+      document.body.classList.remove(...bodyClasses);
+    };
+  });
 
   const messages = defineMessages("layout", {
     title: "healthcheck.help",
