@@ -7,7 +7,7 @@
 
   --size-border-radius: 0.3em;
   --size-font-base: 16px;
-  --size-page-padding: calc((100% - 1440px) / 2);
+  --size-page-padding: calc((100% - 1280px) / 2);
 
   /* Derived colors */
 
@@ -21,7 +21,7 @@
   --color-secondary-120: hsl(from var(--color-secondary) h s calc(l + 20));
 }
 
-@media (width < 1440px) {
+@media (width < 1280px) {
   :root {
     --size-page-padding: 1rem;
   }

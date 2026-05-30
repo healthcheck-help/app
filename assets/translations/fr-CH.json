@@ -4,7 +4,7 @@
     "pageTitle": "healthcheck.help - Comment demander à vos conteneurs: «Tout va bien?»",
     "description": "Comment demander à vos conteneurs: «Tout va bien?» — surveillez et gérez vos healthchecks de conteneurs facilement.",
     "keywords": "healthcheck, conteneurs, docker, surveillance, devops, vérification de santé",
-    "author": "Robin Bühler"
+    "author": "Robin Bühler (openscript GmbH)"
   },
   "home": {
     "title": "Bienvenue sur healthcheck.help"

@@ -19,7 +19,7 @@
       'How to ask your containers: "You good?" — monitor and manage your container health checks with ease.',
     keywords:
       "healthcheck, containers, docker, monitoring, devops, health check",
-    author: "Robin Bühler, openscript GmbH",
+    author: "Robin Bühler (openscript GmbH)",
   });
 
   function getHrefLang(locale: string, path: string): string {

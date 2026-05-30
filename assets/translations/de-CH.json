@@ -4,7 +4,7 @@
     "pageTitle": "healthcheck.help - Wie fragst du deine Container: «Alles gut?»",
     "description": "Wie fragst du deine Container: «Alles gut?» — überwache und verwalte deine Container-Healthchecks ganz einfach.",
     "keywords": "healthcheck, container, docker, monitoring, devops, gesundheitsprüfung",
-    "author": "Robin Bühler"
+    "author": "Robin Bühler (openscript GmbH)"
   },
   "home": {
     "title": "Willkommen bei healthcheck.help"
