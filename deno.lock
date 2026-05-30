@@ -3,7 +3,7 @@
   "specifiers": {
     "npm:@biomejs/biome@^2.4.16": "2.4.16",
     "npm:@changesets/cli@^2.31.0": "2.31.0_@types+node@25.9.1",
-    "npm:@deno/svelte-adapter@~0.1.1": "0.1.1_@sveltejs+kit@2.61.1__@sveltejs+vite-plugin-svelte@7.1.2___svelte@5.55.10___vite@8.0.14____@types+node@25.9.1___@types+node@25.9.1__svelte@5.55.10__typescript@6.0.3__vite@8.0.14___@types+node@25.9.1__@types+node@25.9.1_@sveltejs+vite-plugin-svelte@7.1.2__svelte@5.55.10__vite@8.0.14___@types+node@25.9.1__@types+node@25.9.1_@types+node@25.9.1_svelte@5.55.10_typescript@6.0.3_vite@8.0.14__@types+node@25.9.1",
+    "npm:@deno/svelte-adapter@0.2": "0.2.1_@sveltejs+kit@2.61.1__@sveltejs+vite-plugin-svelte@7.1.2___svelte@5.55.10___vite@8.0.14____@types+node@25.9.1___@types+node@25.9.1__svelte@5.55.10__typescript@6.0.3__vite@8.0.14___@types+node@25.9.1__@types+node@25.9.1",
     "npm:@fontsource-variable/fraunces@^5.2.9": "5.2.9",
     "npm:@fontsource-variable/readex-pro@^5.2.11": "5.2.11",
     "npm:@iconify-json/tabler@^1.2.35": "1.2.35",
@@ -348,8 +348,8 @@
         "urlpattern-polyfill"
       ]
     },
-    "@deno/svelte-adapter@0.1.1_@sveltejs+kit@2.61.1__@sveltejs+vite-plugin-svelte@7.1.2___svelte@5.55.10___vite@8.0.14____@types+node@25.9.1___@types+node@25.9.1__svelte@5.55.10__typescript@6.0.3__vite@8.0.14___@types+node@25.9.1__@types+node@25.9.1_@sveltejs+vite-plugin-svelte@7.1.2__svelte@5.55.10__vite@8.0.14___@types+node@25.9.1__@types+node@25.9.1_@types+node@25.9.1_svelte@5.55.10_typescript@6.0.3_vite@8.0.14__@types+node@25.9.1": {
-      "integrity": "sha512-QjVTWsbf+xZM2gTpm6j0gdVy+C72RG4M8Us3Eo9sJ3IqXgbtMzBiSWURGFJNFEoWjpZmor0MIaej7yogYcgT4A==",
+    "@deno/svelte-adapter@0.2.1_@sveltejs+kit@2.61.1__@sveltejs+vite-plugin-svelte@7.1.2___svelte@5.55.10___vite@8.0.14____@types+node@25.9.1___@types+node@25.9.1__svelte@5.55.10__typescript@6.0.3__vite@8.0.14___@types+node@25.9.1__@types+node@25.9.1": {
+      "integrity": "sha512-jVdTaq9FwuYpOehCsiVmSNz4D/8FzewNSk6apvt1dNonp+MtJm/x5dV2xHVpiHesby2Nw/is7NcBU2NX2PArVQ==",
       "dependencies": [
         "@deno/experimental-route-config",
         "@sveltejs/kit"
@@ -2757,7 +2757,7 @@
     "members": {
       "apps/core": {
         "dependencies": [
-          "npm:@deno/svelte-adapter@~0.1.1",
+          "npm:@deno/svelte-adapter@0.2",
           "npm:@iconify-json/tabler@^1.2.35",
           "npm:@libsql/client@~0.17.3",
           "npm:@libsql/kysely-libsql@~0.4.1",

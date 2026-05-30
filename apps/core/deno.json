@@ -15,7 +15,7 @@
     "test": "deno task test:e2e"
   },
   "imports": {
-    "@deno/svelte-adapter": "npm:@deno/svelte-adapter@^0.1.1",
+    "@deno/svelte-adapter": "npm:@deno/svelte-adapter@^0.2.0",
     "@nanostores/i18n": "npm:@nanostores/i18n@^1.3.3",
     "@libsql/client": "npm:@libsql/client@^0.17.3",
     "@libsql/kysely-libsql": "npm:@libsql/kysely-libsql@^0.4.1",
