@@ -1,5 +1,11 @@
 # @healthcheck/core
 
+## 0.0.12
+
+### Patch Changes
+
+- e4d1a6f: Adjust server deployment
+
 ## 0.0.11
 
 ### Patch Changes

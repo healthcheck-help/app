@@ -1,6 +1,6 @@
 {
   "name": "@healthcheck/core",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "dependencies": {
     "@healthcheck/auth": "workspace:*",
     "@healthcheck/db": "workspace:*",
