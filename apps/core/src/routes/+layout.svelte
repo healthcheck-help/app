@@ -14,12 +14,12 @@
 
   const messages = defineMessages("layout", {
     title: "healthcheck.help",
-    pageTitle: "healthcheck.help - How to ask your containers: \"You good?\"",
+    pageTitle: 'healthcheck.help - How to ask your containers: "You good?"',
     description:
-      "How to ask your containers: \"You good?\" — monitor and manage your container health checks with ease.",
+      'How to ask your containers: "You good?" — monitor and manage your container health checks with ease.',
     keywords:
       "healthcheck, containers, docker, monitoring, devops, health check",
-    author: "Robin Bühler",
+    author: "Robin Bühler, openscript GmbH",
   });
 
   function getHrefLang(locale: string, path: string): string {

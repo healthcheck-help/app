@@ -1,5 +1,11 @@
 {
   "name": "@healthcheck/root",
+  "license": "AGPL-3.0-only",
+  "author": {
+    "email": "hi+r@obin.ch",
+    "name": "Robin Bühler (openscript GmbH)",
+    "url": "https://openscript.ch"
+  },
   "version": "0.0.1",
   "workspaces": [
     "./apps/*",
