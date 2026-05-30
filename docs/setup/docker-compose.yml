@@ -35,19 +35,17 @@ services:
     environment:
       DATABASE_URL: /database/healthcheck.db
       BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET}
-      BETTER_AUTH_URL: https://healthcheck.help
+      BETTER_AUTH_URL: https://www.healthcheck.help
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
       - "com.centurylinklabs.watchtower.scope=healthcheck"
       - "traefik.enable=true"
-      - "traefik.http.routers.core.rule=Host(`healthcheck.help`)"
-      - "traefik.http.routers.core.entrypoints=http,https"
-      - "traefik.http.middlewares.redirect-https.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.redirect-https.redirectscheme.permanent=true"
-      - "traefik.http.routers.core.middlewares=redirect-https"
-      - "traefik.http.routers.core.tls=true"
-      - "traefik.http.routers.core.tls.certresolver=letsencrypt"
-      - "traefik.http.services.core.loadbalancer.server.port=8000"
+      - "traefik.http.routers.healthcheck-core.rule=Host(`www.healthcheck.help`)"
+      - "traefik.http.routers.healthcheck-core.entrypoints=http,https"
+      - "traefik.http.routers.healthcheck-core.middlewares=redirect-https"
+      - "traefik.http.routers.healthcheck-core.tls=true"
+      - "traefik.http.routers.healthcheck-core.tls.certresolver=letsencrypt"
+      - "traefik.http.services.healthcheck-core.loadbalancer.server.port=8000"
     networks:
       - proxy
       - healthcheck
@@ -66,10 +64,10 @@ services:
       WATCHTOWER_REVIVE_STOPPED: "true"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.watchtower.rule=Host(`watchtower.healthcheck.help`)"
-      - "traefik.http.routers.watchtower.entrypoints=https"
-      - "traefik.http.routers.watchtower.tls=true"
-      - "traefik.http.routers.watchtower.tls.certresolver=letsencrypt"
-      - "traefik.http.services.watchtower.loadbalancer.server.port=8080"
+      - "traefik.http.routers.healthcheck-watchtower.rule=Host(`watchtower.healthcheck.help`)"
+      - "traefik.http.routers.healthcheck-watchtower.entrypoints=https"
+      - "traefik.http.routers.healthcheck-watchtower.tls=true"
+      - "traefik.http.routers.healthcheck-watchtower.tls.certresolver=letsencrypt"
+      - "traefik.http.services.healthcheck-watchtower.loadbalancer.server.port=8080"
     networks:
       - proxy
