@@ -53,7 +53,7 @@ services:
       - healthcheck
 
   watchtower:
-    image: docker.io/nickfedor/watchtower:1.14.2
+    image: docker.io/nickfedor/watchtower:1.17.2
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
