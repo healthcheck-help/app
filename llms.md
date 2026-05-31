@@ -10,7 +10,7 @@ Motivation: Many images don't have a HEALTHCHECK defined and many people don't k
 The project consists of two repositories:
 
 - [app](https://codeberg.org/healthcheck/app): The main application, a SvelteKit app that provides the user interface and the logic to manage health checks.
-- [data](https://codeberg.org/healthcheck/data): A collection of health check definitions and related data, which is used by the app to provide recommendations and information.
+- [data](https://codeberg.org/healthcheck/data): A collection of health check definitions and related data, which is used by the app to provide recommendations and information. (This repository is available under .llm/data for agentic work.)
 
 HEALTHCHECKs are defined in the data repository as individual JSON files inside the following folder structure:
 
@@ -20,6 +20,8 @@ HEALTHCHECKs are defined in the data repository as individual JSON files inside 
       - Tag (e.g. `latest`) and `default.json`
 
 JSON files contain the definition of a HEALTHCHECK according to the [docker compose specification](https://github.com/compose-spec/compose-spec/blob/8c28d854433e6efe224f3d1c288b3ab5d873402d/schema/compose-spec.json#L921-L959).
+
+The core app should have a local clone of the data repository and manage the HEALTHCHECK definitions by creating branches, committing changes, and creating pull requests to merge changes into the main branch of the data repository. If the data repository is updated (e.g. a pull request is merged), the app should pull the latest changes to keep the local clone up to date. The notification happens via a webhook that the data repository sends to the app when a pull request is merged.
 
 ## Flows
 
@@ -35,7 +37,7 @@ This section describes the main flows of the application.
 6. The user fills out the form to define a HEALTHCHECK.
 7. The app validates the input and provides feedback.
 8. The user submits the form.
-9. The app creates a pull request to the data repository with the new or updated HEALTHCHECK definition.
+9. The app creates a new branch, commits the new or updated HEALTHCHECK to the branch, and creates a pull request to merge the changes into the main branch of the data repository.
 10. The user can track the pull request and see when it gets merged.
 
 ### Explore HEALTHCHECKS
