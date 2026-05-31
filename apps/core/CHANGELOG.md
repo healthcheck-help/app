@@ -1,5 +1,12 @@
 # @healthcheck/core
 
+## 0.0.16
+
+### Patch Changes
+
+- a1a9f09: Disable csrf check origin
+- d8b22d2: Show version
+
 ## 0.0.15
 
 ### Patch Changes
