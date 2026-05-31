@@ -1,6 +1,6 @@
 {
-  "name": "healthcheck.help",
-  "short_name": "healthcheck",
+  "name": "Healthcheck.help",
+  "short_name": "Healthcheck",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

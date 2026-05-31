@@ -1,12 +1,3 @@
-body {
-  display: flex;
-  flex-direction: column;
-
-  main:first-of-type {
-    flex-grow: 1;
-  }
-}
-
 nav ul {
   display: flex;
   gap: 0.5em;
@@ -14,4 +5,19 @@ nav ul {
   margin: 0;
   list-style: none;
   align-items: center;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+body.centered {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
 }

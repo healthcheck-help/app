@@ -1,9 +1,22 @@
 <script lang="ts">
   import { defineMessages } from "@healthcheck/i18n";
+  import Logo from "$lib/assets/logo.webp";
+  import Search from "$lib/components/Search.svelte";
+  import { bodyClasses } from "$lib/layout.svelte";
+
+  bodyClasses.push("centered");
 
   const messages = defineMessages("home", {
-    title: "Welcome to healthcheck.help",
+    title: 'How to ask your containers: "You good?"',
   });
 </script>
 
+<img src={Logo} alt="Logo" style="width: auto; height: 100%;" />
 <h1>{$messages.title}</h1>
+<Search />
+
+<style>
+  img {
+    max-width: 10rem;
+  }
+</style>

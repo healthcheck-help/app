@@ -8,20 +8,21 @@
   });
 </script>
 
+<footer class="page-margin">
+  <span>{$messages.version}: {props.version}</span>
+</footer>
+
 <style>
   footer {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    background-color: var(--color-primary-180);
-    margin-block: 1rem;
+    font-size: 0.8rem;
+    margin-block-start: 1rem;
     padding-inline: 1rem;
     border-radius: 900px;
     height: 3rem;
     container-type: size;
   }
 </style>
-
-<footer class="page-margin">
-  <span>{$messages.version}: {props.version}</span>
-</footer>

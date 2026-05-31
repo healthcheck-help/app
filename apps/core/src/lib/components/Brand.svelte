@@ -1,9 +1,12 @@
 <script lang="ts">
-  import Logo from "$lib/assets/logo.svg?component";
   import { resolveWithCurrentLocale } from "$lib/routes-client";
 
   let { id = undefined } = $props();
 </script>
+
+<a href={resolveWithCurrentLocale("/")} {id}>
+  healthcheck.help
+</a>
 
 <style>
   a {
@@ -20,8 +23,3 @@
     }
   }
 </style>
-
-<a href={resolveWithCurrentLocale("/")} {id}>
-  <Logo width="auto" height="100%" />
-  healthcheck.help
-</a>
