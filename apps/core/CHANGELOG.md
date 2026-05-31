@@ -1,5 +1,13 @@
 # @healthcheck/core
 
+## 0.0.14
+
+### Patch Changes
+
+- 89dd19f: Pin kysely version
+- Updated dependencies [89dd19f]
+  - @healthcheck/auth@0.0.4
+
 ## 0.0.13
 
 ### Patch Changes
