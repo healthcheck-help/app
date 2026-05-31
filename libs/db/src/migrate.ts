@@ -18,7 +18,11 @@ export async function runMigrations(
 
   // Default migrations folder path relative to this file
   const migrationsFolder =
-    migrationsPath || resolve(import.meta.dirname, "./db/migrations");
+    migrationsPath ||
+    resolve(
+      import.meta.dirname ?? new URL(".", import.meta.url).pathname,
+      "./db/migrations",
+    );
 
   console.log(`Running migrations from ${migrationsFolder}...`);
   await migrate(db, { migrationsFolder });

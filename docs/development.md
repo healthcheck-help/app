@@ -5,6 +5,7 @@
 1. Install the dependencies with `deno install`
 1. Open the project in the Dev Container and run `deno task dev`
 1. Set environment variables in `apps/core/.env` (see `.env.example` for reference)
+1. Run `deno task migrate` to create the database tables
 1. Run tests with `deno task test`
 
 ## Upgrade dependencies

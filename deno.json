@@ -11,6 +11,7 @@
   "tasks": {
     "build": "deno task -f @healthcheck/theme build && deno task -f @healthcheck/core build",
     "dev": "deno task -f @healthcheck/theme build && (deno task -f @healthcheck/theme dev & deno task -f @healthcheck/core dev)",
+    "migrate": "deno run --allow-all apps/core/scripts/migrate.ts",
     "upgrade": "deno outdated -u -r -i --latest",
     "lint": "biome lint .",
     "check": "biome check .",

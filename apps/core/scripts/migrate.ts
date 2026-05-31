@@ -1,17 +1,8 @@
-import { resolve } from "node:path";
 import { runAuthMigrations } from "@healthcheck/auth";
 import { runMigrations } from "@healthcheck/db";
 
-if (!import.meta.dirname) {
-  throw new Error("migrate.ts must be run from a file URL");
-}
-
 const databaseUrl = Deno.env.get("DATABASE_URL") || undefined;
-const migrationsPath =
-  Deno.env.get("MIGRATIONS_PATH") ??
-  resolve(import.meta.dirname, "./migrations");
-
-console.log("Running database migrations...");
+const migrationsPath = Deno.env.get("MIGRATIONS_PATH") || undefined;
 
 await runMigrations(databaseUrl, migrationsPath);
 await runAuthMigrations({
