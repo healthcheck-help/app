@@ -1,5 +1,13 @@
 # @healthcheck/core
 
+## 0.0.13
+
+### Patch Changes
+
+- 6abc00e: Layout landing page
+- Updated dependencies [6abc00e]
+  - @healthcheck/theme@0.0.4
+
 ## 0.0.12
 
 ### Patch Changes
