@@ -6,6 +6,6 @@
   },
   "imports": {
     "@libsql/kysely-libsql": "npm:@libsql/kysely-libsql@^0.4.1",
-    "better-auth": "npm:better-auth@^1.6.11"
+    "better-auth": "npm:better-auth@^1.6.13"
   }
 }
