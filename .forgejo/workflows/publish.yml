@@ -52,7 +52,7 @@ jobs:
       - name: Plan container images to publish
         id: images
         run: |
-          possible_targets=$(git ls-files -- '**/deno.json' \
+          possible_targets=$(git ls-files -- '**/Dockerfile' \
             | while read -r f; do dir=$(dirname "$f"); if [ -f "$dir/deno.json" ] && [ "$dir" != "." ]; then jq -r '.name // empty' "$dir/deno.json"; fi; done \
             | jq -R -s 'split("\n") | map(select(length>0))')
           published_packages='${{ steps.changesets.outputs.publishedPackages }}'
