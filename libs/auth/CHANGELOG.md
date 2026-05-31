@@ -1,5 +1,11 @@
 # @healthcheck/auth
 
+## 0.0.4
+
+### Patch Changes
+
+- 89dd19f: Pin kysely version
+
 ## 0.0.3
 
 ### Patch Changes
