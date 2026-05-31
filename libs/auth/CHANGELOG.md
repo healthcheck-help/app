@@ -1,5 +1,11 @@
 # @healthcheck/auth
 
+## 0.0.5
+
+### Patch Changes
+
+- c1cdb09: Detect only packages with Dockerfile to publish
+
 ## 0.0.4
 
 ### Patch Changes
