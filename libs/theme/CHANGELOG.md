@@ -1,5 +1,11 @@
 # @healthcheck/theme
 
+## 0.0.4
+
+### Patch Changes
+
+- 6abc00e: Layout landing page
+
 ## 0.0.3
 
 ### Patch Changes
