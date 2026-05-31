@@ -204,4 +204,4 @@ jobs:
     steps:
       - name: Trigger Watchtower update
         run: |
-          curl -H "Authorization: Bearer ${{ secrets.WATCHTOWER_TOKEN }}" https://watchtower.healthcheck.help/v1/update --show-error --fail
+          curl -X POST -H "Authorization: Bearer ${{ secrets.WATCHTOWER_TOKEN }}" https://watchtower.healthcheck.help/v1/update --show-error --fail
