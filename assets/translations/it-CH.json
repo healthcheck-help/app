@@ -9,6 +9,26 @@
   "home": {
     "title": "Come chiedere ai tuoi container: «Tutto bene?»"
   },
+  "search": {
+    "placeholder": "Cerca un'immagine (es. nginx)…",
+    "noResults": "Nessun risultato trovato.",
+    "error": "La ricerca non è attualmente disponibile."
+  },
+  "explore": {
+    "notFoundTitle": "Immagine non trovata",
+    "notFoundMessage": "Non esistono ancora definizioni di HEALTHCHECK per questa immagine.",
+    "tagLabel": "Tag",
+    "testLabel": "Test",
+    "intervalLabel": "Intervallo",
+    "timeoutLabel": "Timeout",
+    "retriesLabel": "Tentativi",
+    "startPeriodLabel": "Periodo di avvio",
+    "startIntervalLabel": "Intervallo di avvio",
+    "dockerfileLabel": "Dockerfile",
+    "composeLabel": "docker-compose",
+    "copyLabel": "Copia",
+    "copiedLabel": "Copiato!"
+  },
   "footer": {
     "version": "Versione"
   },

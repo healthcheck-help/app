@@ -4,6 +4,16 @@ import { type Handle, redirect } from "@sveltejs/kit";
 import { building } from "$app/environment";
 import { resolveWithLocale } from "$lib/routes";
 import { auth } from "$lib/server/auth";
+import { ensureCloned } from "$lib/server/data-repository";
+
+if (!building) {
+  ensureCloned().catch((error) => {
+    console.error(
+      "[hooks.server] failed to prepare data repository:",
+      error instanceof Error ? error.message : error,
+    );
+  });
+}
 
 function getPathWithoutLocale(pathname: string): string {
   const segments = pathname.split("/").filter(Boolean);

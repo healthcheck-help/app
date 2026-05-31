@@ -1,8 +1,18 @@
 import { page } from "$app/state";
 import { getLocaleFromPathname } from "$lib/locale";
-import { type LocalizedPath, resolveWithLocale } from "$lib/routes";
+import {
+  type ExploreRef,
+  type LocalizedPath,
+  resolveExplore,
+  resolveWithLocale,
+} from "$lib/routes";
 
 export function resolveWithCurrentLocale(path: LocalizedPath): string {
   const locale = getLocaleFromPathname(page.url.pathname);
   return resolveWithLocale(path, { locale });
+}
+
+export function resolveExploreWithCurrentLocale(ref: ExploreRef): string {
+  const locale = getLocaleFromPathname(page.url.pathname);
+  return resolveExplore(ref, { locale });
 }

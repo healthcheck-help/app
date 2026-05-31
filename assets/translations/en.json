@@ -9,6 +9,26 @@
   "home": {
     "title": "How to ask your containers: \"You good?\""
   },
+  "search": {
+    "placeholder": "Search for an image (e.g. nginx)…",
+    "noResults": "No matches found.",
+    "error": "Search is currently unavailable."
+  },
+  "explore": {
+    "notFoundTitle": "Image not found",
+    "notFoundMessage": "No HEALTHCHECK definitions exist for this image yet.",
+    "tagLabel": "Tag",
+    "testLabel": "Test",
+    "intervalLabel": "Interval",
+    "timeoutLabel": "Timeout",
+    "retriesLabel": "Retries",
+    "startPeriodLabel": "Start period",
+    "startIntervalLabel": "Start interval",
+    "dockerfileLabel": "Dockerfile",
+    "composeLabel": "docker-compose",
+    "copyLabel": "Copy",
+    "copiedLabel": "Copied!"
+  },
   "footer": {
     "version": "Version"
   },

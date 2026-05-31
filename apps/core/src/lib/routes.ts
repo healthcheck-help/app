@@ -39,3 +39,18 @@ export function resolveWithLocale(
   }
   return resolve(`/${locale}${suffix}`);
 }
+
+export type ExploreRef = {
+  registry: string;
+  namespace: string;
+  image: string;
+};
+
+export function resolveExplore(ref: ExploreRef, params?: LocaleParams): string {
+  const segment = `/explore/${encodeURIComponent(ref.registry)}/${encodeURIComponent(ref.namespace)}/${encodeURIComponent(ref.image)}`;
+  const locale = params?.locale;
+  if (!locale || locale === DEFAULT_LOCALE) {
+    return resolve(segment);
+  }
+  return resolve(`/${locale}${segment}`);
+}

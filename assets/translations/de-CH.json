@@ -9,6 +9,26 @@
   "home": {
     "title": "Wie fragst du deine Container: «Alles gut?»"
   },
+  "search": {
+    "placeholder": "Image suchen (z.B. nginx)…",
+    "noResults": "Keine Treffer gefunden.",
+    "error": "Die Suche ist zurzeit nicht verfügbar."
+  },
+  "explore": {
+    "notFoundTitle": "Image nicht gefunden",
+    "notFoundMessage": "Für dieses Image gibt es noch keine HEALTHCHECK-Definitionen.",
+    "tagLabel": "Tag",
+    "testLabel": "Test",
+    "intervalLabel": "Intervall",
+    "timeoutLabel": "Timeout",
+    "retriesLabel": "Wiederholungen",
+    "startPeriodLabel": "Startphase",
+    "startIntervalLabel": "Startintervall",
+    "dockerfileLabel": "Dockerfile",
+    "composeLabel": "docker-compose",
+    "copyLabel": "Kopieren",
+    "copiedLabel": "Kopiert!"
+  },
   "footer": {
     "version": "Version"
   },

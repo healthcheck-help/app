@@ -1,8 +1,12 @@
 <script lang="ts">
-  export let value: string | number = "";
+  type Props = {
+    value?: string | number;
+    [key: string]: unknown;
+  };
+  let { value = $bindable(""), ...rest }: Props = $props();
 </script>
 
-<input bind:value data-input {...$$restProps} />
+<input bind:value data-input {...rest} />
 
 <style>
   [data-input] {

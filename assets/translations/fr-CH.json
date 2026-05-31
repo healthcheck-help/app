@@ -9,6 +9,26 @@
   "home": {
     "title": "Comment demander à vos conteneurs: «Tout va bien?»"
   },
+  "search": {
+    "placeholder": "Rechercher une image (p.ex. nginx)…",
+    "noResults": "Aucun résultat trouvé.",
+    "error": "La recherche est actuellement indisponible."
+  },
+  "explore": {
+    "notFoundTitle": "Image introuvable",
+    "notFoundMessage": "Aucune définition de HEALTHCHECK n'existe encore pour cette image.",
+    "tagLabel": "Tag",
+    "testLabel": "Test",
+    "intervalLabel": "Intervalle",
+    "timeoutLabel": "Délai",
+    "retriesLabel": "Essais",
+    "startPeriodLabel": "Période de démarrage",
+    "startIntervalLabel": "Intervalle de démarrage",
+    "dockerfileLabel": "Dockerfile",
+    "composeLabel": "docker-compose",
+    "copyLabel": "Copier",
+    "copiedLabel": "Copié!"
+  },
   "footer": {
     "version": "Version"
   },
