@@ -36,6 +36,7 @@ services:
       DATABASE_URL: /database/healthcheck.db
       BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET}
       BETTER_AUTH_URL: https://www.healthcheck.help
+      ORIGIN: https://www.healthcheck.help
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
       - "com.centurylinklabs.watchtower.scope=healthcheck"
