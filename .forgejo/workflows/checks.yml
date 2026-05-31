@@ -11,6 +11,7 @@ on:
 jobs:
   lint:
     name: Run checks
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, 'from changeset-release/') }}
     runs-on: srv-obin-ch_ubuntu-latest
 
     steps:
@@ -40,6 +41,7 @@ jobs:
 
   end-to-end-tests:
     name: Run end-to-end tests
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, 'from changeset-release/') }}
     runs-on: srv-obin-ch_ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.60.0-noble
