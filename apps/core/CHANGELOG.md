@@ -1,5 +1,11 @@
 # @healthcheck/core
 
+## 0.0.18
+
+### Patch Changes
+
+- 66c4a3b: Improve body class handling
+
 ## 0.0.17
 
 ### Patch Changes
