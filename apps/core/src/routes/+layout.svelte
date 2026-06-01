@@ -6,18 +6,22 @@
     defineMessages,
     SUPPORTED_LOCALES,
   } from "@healthcheck/i18n";
+  import { page } from "$app/state";
   import Footer from "$lib/layout/Footer.svelte";
   import Header from "$lib/layout/Header.svelte";
   import Main from "$lib/layout/Main.svelte";
-  import { bodyClasses } from "$lib/layout.svelte.js";
 
   const { children, data } = $props();
 
   $effect(() => {
-    document.body.classList.add(...bodyClasses);
-    return () => {
-      document.body.classList.remove(...bodyClasses);
-    };
+    const bodyClass = page.data.bodyClass;
+    if (bodyClass) {
+      const classes = bodyClass.split(/\s+/).filter(Boolean);
+      document.body.classList.add(...classes);
+      return () => {
+        document.body.classList.remove(...classes);
+      };
+    }
   });
 
   const messages = defineMessages("layout", {

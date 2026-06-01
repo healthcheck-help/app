@@ -2,9 +2,6 @@
   import { defineMessages } from "@healthcheck/i18n";
   import Logo from "$lib/assets/logo.webp";
   import Search from "$lib/components/Search.svelte";
-  import { bodyClasses } from "$lib/layout.svelte";
-
-  bodyClasses.push("centered");
 
   const messages = defineMessages("home", {
     title: 'How to ask your containers: "You good?"',

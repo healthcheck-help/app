@@ -58,7 +58,9 @@ export const handle: Handle = async ({ event, resolve }) => {
     return resolve(event, {
       ...opts,
       transformPageChunk: ({ html }) =>
-        html.replace("%sveltekit.html_attributes%", `lang="${locale}"`),
+        html
+          .replace("%sveltekit.html_attributes%", `lang="${locale}"`)
+          .replace("%bodyclass%", event.locals.bodyClass ?? ""),
     });
   };
 

@@ -4,6 +4,10 @@ declare global {
       session: Awaited<
         ReturnType<typeof import("$lib/server/auth").auth.api.getSession>
       >;
+      bodyClass?: string;
+    }
+    interface PageData {
+      bodyClass?: string;
     }
   }
 }
