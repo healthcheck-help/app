@@ -6,6 +6,7 @@ FROM --platform=$BUILDER_FROM_PLATFORM ${BASE_IMAGE} AS builder
 
 FROM docker.io/denoland/deno:${DENO_VERSION} AS base
 WORKDIR /usr/src/app
+RUN apt-get update && apt-get install -y git
 
 FROM base AS release
 COPY --from=builder /usr/src/app/apps/core/.deno-deploy ./.deno-deploy
