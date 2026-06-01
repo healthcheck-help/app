@@ -1,5 +1,11 @@
 # @healthcheck/core
 
+## 0.0.17
+
+### Patch Changes
+
+- e492b26: Include git into the image
+
 ## 0.0.16
 
 ### Patch Changes
