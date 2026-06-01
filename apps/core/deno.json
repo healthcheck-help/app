@@ -7,7 +7,7 @@
     "build": "vite build && deno task build:migrate && deno task build:server",
     "build:migrate": "deno bundle --platform=deno --external libsql --output .deno-deploy/migrate.js scripts/migrate.ts",
     "build:server": "deno bundle --platform=deno --external libsql --output .deno-deploy/server.js .deno-deploy/server.ts",
-    "preview": "vite preview",
+    "preview": "vite preview --host",
     "prepare": "svelte-kit sync || echo ''",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
