@@ -33,12 +33,13 @@ This section describes the main flows of the application.
 2. The user authenticates.
 3. The user searches by an image (e.g. `nginx` which becomes `docker.io/library/nginx`).
 4. The app shows the user results for the image, including existing HEALTHCHECKS.
-5. The user chooses to add or edit a HEALTHCHECK.
-6. The user fills out the form to define a HEALTHCHECK.
-7. The app validates the input and provides feedback.
-8. The user submits the form.
-9. The app creates a new branch, commits the new or updated HEALTHCHECK to the branch, and creates a pull request to merge the changes into the main branch of the data repository.
-10. The user can track the pull request and see when it gets merged.
+5. If there is no entry for the given image, the app checks if there is such an image via the registries API. If there is no such image, the app shows an error message. If there is such an image, the app shows a message that there is no HEALTHCHECK defined for this image and offers the user to define one.
+6. The user chooses to add or edit a HEALTHCHECK.
+7. The user fills out the form to define a HEALTHCHECK.
+8. The app validates the input and provides feedback according to the [docker compose specification](https://github.com/compose-spec/compose-spec/blob/8c28d854433e6efe224f3d1c288b3ab5d873402d/schema/compose-spec.json#L921-L959).
+9. The user submits the form.
+10. The app creates a new branch, commits the new or updated HEALTHCHECK to the branch, and creates a pull request to merge the changes (the project is hosted on Codeberg which uses Forgejo) into the main branch of the data repository.
+11. The user can track the pull request and see when it gets merged.
 
 ### Explore HEALTHCHECKS
 

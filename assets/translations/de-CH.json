@@ -27,7 +27,11 @@
     "dockerfileLabel": "Dockerfile",
     "composeLabel": "docker-compose",
     "copyLabel": "Kopieren",
-    "copiedLabel": "Kopiert!"
+    "copiedLabel": "Kopiert!",
+    "addHealthcheck": "HEALTHCHECK hinzufügen",
+    "editHealthcheck": "Bearbeiten",
+    "noEntriesTitle": "Noch kein HEALTHCHECK definiert",
+    "noEntriesMessage": "Für dieses Image gibt es noch keine HEALTHCHECK-Einträge. Melde dich an und definiere einen, um einen Pull Request zu öffnen."
   },
   "footer": {
     "version": "Version"
@@ -65,5 +69,39 @@
     "terminateConfirmButtonLabel": "Ja, mein Konto dauerhaft löschen",
     "cancelButtonLabel": "Abbrechen",
     "deleteFailedTitle": "Löschen fehlgeschlagen"
+  },
+  "define": {
+    "title": "HEALTHCHECK hinzufügen",
+    "editTitle": "HEALTHCHECK bearbeiten",
+    "description": "Definiere den HEALTHCHECK für dieses Image. Das Absenden öffnet einen Pull Request im Daten-Repository.",
+    "referenceLabel": "Image",
+    "tagLabel": "Tag",
+    "testModeLabel": "Testtyp",
+    "testModeShell": "Shell-Befehl (CMD-SHELL)",
+    "testModeCmd": "Exec-Argumente (CMD)",
+    "testModeNone": "Vererbten HEALTHCHECK deaktivieren (NONE)",
+    "testCommandLabel": "Test-Befehl",
+    "testCommandShellHint": "Einzelner Shell-Befehl, z.B. curl --fail http://localhost/ || exit 1",
+    "testCommandCmdHint": "Leerzeichengetrennte Argumente. Mit Anführungszeichen gruppieren, z.B. /bin/sh -c \"pgrep nginx\"",
+    "intervalLabel": "Intervall",
+    "timeoutLabel": "Timeout",
+    "startPeriodLabel": "Startphase",
+    "startIntervalLabel": "Startintervall",
+    "retriesLabel": "Wiederholungen",
+    "disableLabel": "HEALTHCHECK vollständig deaktivieren",
+    "durationHint": "Go-Dauer, z.B. 30s, 5m, 1h",
+    "submitCreate": "HEALTHCHECK erstellen",
+    "submitUpdate": "HEALTHCHECK aktualisieren",
+    "submitFailedTitle": "Übermittlung fehlgeschlagen",
+    "fieldErrorTitle": "Bitte korrigiere das Formular",
+    "errors.testRequired": "Test-Befehl ist erforderlich.",
+    "errors.invalidTestMode": "Ungültiger Testtyp.",
+    "errors.invalidDuration": "Verwende eine Dauer wie 30s, 5m oder 1h.",
+    "errors.invalidRetries": "Wiederholungen müssen eine nicht-negative ganze Zahl sein.",
+    "errors.imageNotFound": "Dieses Image wurde in der Registry nicht gefunden. Bitte Namespace und Image-Name prüfen.",
+    "errors.registryUnavailable": "Die Image-Registry konnte nicht erreicht werden. Bitte erneut versuchen.",
+    "errors.noChanges": "Der übermittelte HEALTHCHECK ist identisch mit dem bestehenden. Es wurde kein Pull Request geöffnet.",
+    "errors.commitFailed": "Das Übertragen der Änderung in das Daten-Repository ist fehlgeschlagen.",
+    "errors.prFailed": "Der Commit wurde gepusht, aber das Erstellen des Pull Requests ist fehlgeschlagen."
   }
 }

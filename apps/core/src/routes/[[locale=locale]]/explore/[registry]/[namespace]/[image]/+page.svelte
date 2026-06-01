@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineMessages } from "@healthcheck/i18n";
+  import { resolveDefineWithCurrentLocale } from "$lib/routes-client";
   import type { HealthcheckDefinition } from "$lib/server/data-repository";
 
   let { data } = $props();
@@ -16,6 +17,11 @@
     composeLabel: "docker-compose",
     copyLabel: "Copy",
     copiedLabel: "Copied!",
+    addHealthcheck: "Add HEALTHCHECK",
+    editHealthcheck: "Edit",
+    noEntriesTitle: "No HEALTHCHECK defined yet",
+    noEntriesMessage:
+      "This image has no HEALTHCHECK entries. Sign in and define one to open a pull request.",
   });
 
   function formatTest(test: HealthcheckDefinition["test"]): string {
@@ -103,6 +109,26 @@
 
 <h1><code>{data.reference}</code></h1>
 
+<p class="actions">
+  <a
+    href={resolveDefineWithCurrentLocale({
+      registry: data.registry,
+      namespace: data.namespace,
+      image: data.image,
+    })}
+    role="button"
+  >
+    {$messages.addHealthcheck}
+  </a>
+</p>
+
+{#if data.healthchecks.length === 0}
+  <section class="empty">
+    <h2>{$messages.noEntriesTitle}</h2>
+    <p>{$messages.noEntriesMessage}</p>
+  </section>
+{/if}
+
 {#each data.healthchecks as entry (entry.tag)}
   {@const dockerfile = toDockerfile(entry.healthcheck)}
   {@const compose = toCompose(entry.healthcheck)}
@@ -111,6 +137,17 @@
   <section class="healthcheck">
     <header>
       <span class="tag">{$messages.tagLabel}: <code>{entry.tag}</code></span>
+      <a
+        class="edit"
+        href={resolveDefineWithCurrentLocale({
+          registry: data.registry,
+          namespace: data.namespace,
+          image: data.image,
+          tag: entry.tag,
+        })}
+      >
+        {$messages.editHealthcheck}
+      </a>
     </header>
 
     <dl>
@@ -172,6 +209,22 @@
   }
   .healthcheck header {
     margin-bottom: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .edit {
+    font-size: 0.9em;
+  }
+  .actions {
+    margin: 0.75rem 0 1rem;
+  }
+  .empty {
+    border: 0.1em dashed var(--color-primary-120, #ccc);
+    border-radius: var(--size-border-radius, 0.25rem);
+    padding: 1rem;
+    margin: 1rem 0;
   }
   .tag {
     font-size: 0.9em;

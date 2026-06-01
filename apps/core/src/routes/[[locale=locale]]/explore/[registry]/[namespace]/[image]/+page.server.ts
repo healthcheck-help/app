@@ -1,13 +1,9 @@
-import { error } from "@sveltejs/kit";
 import { loadHealthchecks } from "$lib/server/data-repository";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ params }) => {
   const { registry, namespace, image } = params;
   const healthchecks = await loadHealthchecks(registry, namespace, image);
-  if (healthchecks.length === 0) {
-    error(404, `No HEALTHCHECK found for ${registry}/${namespace}/${image}`);
-  }
   return {
     registry,
     namespace,

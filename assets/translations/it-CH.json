@@ -27,7 +27,11 @@
     "dockerfileLabel": "Dockerfile",
     "composeLabel": "docker-compose",
     "copyLabel": "Copia",
-    "copiedLabel": "Copiato!"
+    "copiedLabel": "Copiato!",
+    "addHealthcheck": "Aggiungi HEALTHCHECK",
+    "editHealthcheck": "Modifica",
+    "noEntriesTitle": "Nessun HEALTHCHECK ancora definito",
+    "noEntriesMessage": "Questa immagine non ha voci HEALTHCHECK. Accedi e definiscine una per aprire una pull request."
   },
   "footer": {
     "version": "Versione"
@@ -65,5 +69,39 @@
     "terminateConfirmButtonLabel": "Sì, elimina definitivamente il mio account",
     "cancelButtonLabel": "Annulla",
     "deleteFailedTitle": "Eliminazione fallita"
+  },
+  "define": {
+    "title": "Aggiungi HEALTHCHECK",
+    "editTitle": "Modifica HEALTHCHECK",
+    "description": "Definisci l'HEALTHCHECK per questa immagine. L'invio apre una pull request nel repository dei dati.",
+    "referenceLabel": "Immagine",
+    "tagLabel": "Tag",
+    "testModeLabel": "Tipo di test",
+    "testModeShell": "Comando shell (CMD-SHELL)",
+    "testModeCmd": "Argomenti exec (CMD)",
+    "testModeNone": "Disabilita HEALTHCHECK ereditato (NONE)",
+    "testCommandLabel": "Comando di test",
+    "testCommandShellHint": "Comando shell singolo, es. curl --fail http://localhost/ || exit 1",
+    "testCommandCmdHint": "Argomenti separati da spazi. Usa le virgolette per raggruppare, es. /bin/sh -c \"pgrep nginx\"",
+    "intervalLabel": "Intervallo",
+    "timeoutLabel": "Timeout",
+    "startPeriodLabel": "Periodo di avvio",
+    "startIntervalLabel": "Intervallo di avvio",
+    "retriesLabel": "Tentativi",
+    "disableLabel": "Disabilita completamente l'HEALTHCHECK",
+    "durationHint": "Durata Go, es. 30s, 5m, 1h",
+    "submitCreate": "Crea HEALTHCHECK",
+    "submitUpdate": "Aggiorna HEALTHCHECK",
+    "submitFailedTitle": "Invio fallito",
+    "fieldErrorTitle": "Correggi il modulo",
+    "errors.testRequired": "Il comando di test è obbligatorio.",
+    "errors.invalidTestMode": "Tipo di test non valido.",
+    "errors.invalidDuration": "Usa una durata come 30s, 5m o 1h.",
+    "errors.invalidRetries": "I tentativi devono essere un intero non negativo.",
+    "errors.imageNotFound": "Immagine non trovata nel registry. Controlla namespace e nome dell'immagine.",
+    "errors.registryUnavailable": "Il registry delle immagini non è raggiungibile. Riprova.",
+    "errors.noChanges": "L'HEALTHCHECK inviato è identico a quello esistente. Nessuna pull request aperta.",
+    "errors.commitFailed": "Commit della modifica nel repository dei dati fallito.",
+    "errors.prFailed": "Il commit è stato inviato ma la creazione della pull request è fallita."
   }
 }

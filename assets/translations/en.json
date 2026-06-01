@@ -27,7 +27,11 @@
     "dockerfileLabel": "Dockerfile",
     "composeLabel": "docker-compose",
     "copyLabel": "Copy",
-    "copiedLabel": "Copied!"
+    "copiedLabel": "Copied!",
+    "addHealthcheck": "Add HEALTHCHECK",
+    "editHealthcheck": "Edit",
+    "noEntriesTitle": "No HEALTHCHECK defined yet",
+    "noEntriesMessage": "This image has no HEALTHCHECK entries. Sign in and define one to open a pull request."
   },
   "footer": {
     "version": "Version"
@@ -65,5 +69,39 @@
     "terminateConfirmButtonLabel": "Yes, permanently delete my account",
     "cancelButtonLabel": "Cancel",
     "deleteFailedTitle": "Delete failed"
+  },
+  "define": {
+    "title": "Add HEALTHCHECK",
+    "editTitle": "Edit HEALTHCHECK",
+    "description": "Define the HEALTHCHECK for this image. Submitting opens a pull request against the data repository.",
+    "referenceLabel": "Image",
+    "tagLabel": "Tag",
+    "testModeLabel": "Test type",
+    "testModeShell": "Shell command (CMD-SHELL)",
+    "testModeCmd": "Exec arguments (CMD)",
+    "testModeNone": "Disable inherited HEALTHCHECK (NONE)",
+    "testCommandLabel": "Test command",
+    "testCommandShellHint": "Single shell command, e.g. curl --fail http://localhost/ || exit 1",
+    "testCommandCmdHint": "Space-separated arguments. Use quotes to group, e.g. /bin/sh -c \"pgrep nginx\"",
+    "intervalLabel": "Interval",
+    "timeoutLabel": "Timeout",
+    "startPeriodLabel": "Start period",
+    "startIntervalLabel": "Start interval",
+    "retriesLabel": "Retries",
+    "disableLabel": "Disable HEALTHCHECK entirely",
+    "durationHint": "Go duration, e.g. 30s, 5m, 1h",
+    "submitCreate": "Create HEALTHCHECK",
+    "submitUpdate": "Update HEALTHCHECK",
+    "submitFailedTitle": "Submission failed",
+    "fieldErrorTitle": "Please fix the form",
+    "errors.testRequired": "Test command is required.",
+    "errors.invalidTestMode": "Invalid test type.",
+    "errors.invalidDuration": "Use a duration like 30s, 5m or 1h.",
+    "errors.invalidRetries": "Retries must be a non-negative integer.",
+    "errors.imageNotFound": "No such image was found in the registry. Check the namespace and image name.",
+    "errors.registryUnavailable": "The image registry could not be reached. Please try again.",
+    "errors.noChanges": "The submitted HEALTHCHECK is identical to the existing one. No pull request was opened.",
+    "errors.commitFailed": "Failed to commit the change to the data repository.",
+    "errors.prFailed": "The commit was pushed but creating the pull request failed."
   }
 }

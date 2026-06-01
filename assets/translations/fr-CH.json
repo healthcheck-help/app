@@ -27,7 +27,11 @@
     "dockerfileLabel": "Dockerfile",
     "composeLabel": "docker-compose",
     "copyLabel": "Copier",
-    "copiedLabel": "Copié!"
+    "copiedLabel": "Copié!",
+    "addHealthcheck": "Ajouter un HEALTHCHECK",
+    "editHealthcheck": "Modifier",
+    "noEntriesTitle": "Aucun HEALTHCHECK défini pour le moment",
+    "noEntriesMessage": "Cette image n'a aucune entrée HEALTHCHECK. Connectez-vous et définissez-en un pour ouvrir une pull request."
   },
   "footer": {
     "version": "Version"
@@ -65,5 +69,39 @@
     "terminateConfirmButtonLabel": "Oui, supprimer définitivement mon compte",
     "cancelButtonLabel": "Annuler",
     "deleteFailedTitle": "Échec de la suppression"
+  },
+  "define": {
+    "title": "Ajouter un HEALTHCHECK",
+    "editTitle": "Modifier le HEALTHCHECK",
+    "description": "Définissez le HEALTHCHECK pour cette image. La soumission ouvre une pull request dans le dépôt de données.",
+    "referenceLabel": "Image",
+    "tagLabel": "Tag",
+    "testModeLabel": "Type de test",
+    "testModeShell": "Commande shell (CMD-SHELL)",
+    "testModeCmd": "Arguments exec (CMD)",
+    "testModeNone": "Désactiver le HEALTHCHECK hérité (NONE)",
+    "testCommandLabel": "Commande de test",
+    "testCommandShellHint": "Commande shell unique, p.ex. curl --fail http://localhost/ || exit 1",
+    "testCommandCmdHint": "Arguments séparés par des espaces. Utilisez des guillemets pour grouper, p.ex. /bin/sh -c \"pgrep nginx\"",
+    "intervalLabel": "Intervalle",
+    "timeoutLabel": "Délai",
+    "startPeriodLabel": "Période de démarrage",
+    "startIntervalLabel": "Intervalle de démarrage",
+    "retriesLabel": "Essais",
+    "disableLabel": "Désactiver complètement le HEALTHCHECK",
+    "durationHint": "Durée Go, p.ex. 30s, 5m, 1h",
+    "submitCreate": "Créer le HEALTHCHECK",
+    "submitUpdate": "Mettre à jour le HEALTHCHECK",
+    "submitFailedTitle": "Échec de la soumission",
+    "fieldErrorTitle": "Veuillez corriger le formulaire",
+    "errors.testRequired": "La commande de test est requise.",
+    "errors.invalidTestMode": "Type de test invalide.",
+    "errors.invalidDuration": "Utilisez une durée comme 30s, 5m ou 1h.",
+    "errors.invalidRetries": "Les essais doivent être un entier non négatif.",
+    "errors.imageNotFound": "Cette image est introuvable dans le registre. Vérifiez le namespace et le nom de l'image.",
+    "errors.registryUnavailable": "Le registre d'images est injoignable. Veuillez réessayer.",
+    "errors.noChanges": "Le HEALTHCHECK soumis est identique à l'existant. Aucune pull request n'a été ouverte.",
+    "errors.commitFailed": "Échec du commit de la modification dans le dépôt de données.",
+    "errors.prFailed": "Le commit a été poussé mais la création de la pull request a échoué."
   }
 }

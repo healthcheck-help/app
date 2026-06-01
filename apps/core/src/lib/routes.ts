@@ -54,3 +54,15 @@ export function resolveExplore(ref: ExploreRef, params?: LocaleParams): string {
   }
   return resolve(`/${locale}${segment}`);
 }
+
+export type DefineRef = ExploreRef & { tag?: string };
+
+export function resolveDefine(ref: DefineRef, params?: LocaleParams): string {
+  const base = `/define/${encodeURIComponent(ref.registry)}/${encodeURIComponent(ref.namespace)}/${encodeURIComponent(ref.image)}`;
+  const segment = ref.tag ? `${base}/${encodeURIComponent(ref.tag)}` : base;
+  const locale = params?.locale;
+  if (!locale || locale === DEFAULT_LOCALE) {
+    return resolve(segment);
+  }
+  return resolve(`/${locale}${segment}`);
+}

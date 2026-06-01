@@ -1,9 +1,18 @@
 import { spawn } from "node:child_process";
+import { randomBytes } from "node:crypto";
 import { existsSync } from "node:fs";
-import { mkdir, readdir, readFile, stat } from "node:fs/promises";
+import {
+  mkdir,
+  readdir,
+  readFile,
+  rm,
+  stat,
+  writeFile,
+} from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { env } from "$env/dynamic/private";
+import { getAuthenticatedPushUrl, getDefaultBranch } from "$lib/server/forgejo";
 
 export type HealthcheckDefinition = {
   test?: string[] | string;
@@ -37,20 +46,27 @@ function getRepoUrl(): string {
   return env.DATA_REPO_URL || DEFAULT_REMOTE;
 }
 
-async function runGit(args: string[], cwd?: string): Promise<void> {
+async function runGit(
+  args: string[],
+  cwd?: string,
+): Promise<{ stdout: string }> {
   return new Promise((resolve, reject) => {
     const child = spawn("git", args, {
       cwd,
       stdio: ["ignore", "pipe", "pipe"],
     });
     let stderr = "";
+    let stdout = "";
+    child.stdout?.on("data", (chunk: Buffer) => {
+      stdout += chunk.toString();
+    });
     child.stderr?.on("data", (chunk: Buffer) => {
       stderr += chunk.toString();
     });
     child.on("error", reject);
     child.on("close", (code) => {
       if (code === 0) {
-        resolve();
+        resolve({ stdout });
       } else {
         reject(
           new Error(
@@ -168,4 +184,178 @@ export async function loadHealthchecks(
     return a.tag.localeCompare(b.tag);
   });
   return result;
+}
+
+export async function loadHealthcheckByTag(
+  ref: ImageRef,
+  tag: string,
+): Promise<HealthcheckEntry | null> {
+  const entries = await loadHealthchecks(
+    ref.registry,
+    ref.namespace,
+    ref.image,
+  );
+  return entries.find((e) => e.tag === tag) ?? null;
+}
+
+export type CommitAuthor = { name: string; email: string };
+
+export type CommitHealthcheckInput = {
+  ref: ImageRef;
+  tag: string;
+  healthcheck: HealthcheckDefinition;
+  user: CommitAuthor;
+  intent: "create" | "update";
+};
+
+export type CommitHealthcheckResult = {
+  branch: string;
+  filePath: string;
+  changed: boolean;
+};
+
+function sanitizeBranchSegment(value: string): string {
+  return value.replace(/[^a-zA-Z0-9._-]/g, "-").replace(/-+/g, "-");
+}
+
+function stableStringify(value: HealthcheckDefinition): string {
+  // Preserve compose-spec field ordering for readable diffs.
+  const order: (keyof HealthcheckDefinition)[] = [
+    "test",
+    "interval",
+    "timeout",
+    "retries",
+    "start_period",
+    "start_interval",
+    "disable",
+  ];
+  const out: Record<string, unknown> = {};
+  for (const key of order) {
+    if (value[key] !== undefined) out[key] = value[key];
+  }
+  return `${JSON.stringify(out, null, 2)}\n`;
+}
+
+/**
+ * Create a branch in a temporary worktree, write the healthcheck file, commit,
+ * and push to the configured Forgejo remote. The caller is expected to open a
+ * pull request via the forgejo module afterwards.
+ */
+export async function commitHealthcheckToBranch(
+  input: CommitHealthcheckInput,
+): Promise<CommitHealthcheckResult> {
+  await ensureCloned();
+  const repoPath = getRepoPath();
+  const base = await getDefaultBranch();
+
+  // Refresh local default branch so the new branch is based on latest main.
+  await runGit(["-C", repoPath, "fetch", "origin", base], repoPath);
+
+  const segments = [
+    sanitizeBranchSegment(input.ref.registry),
+    sanitizeBranchSegment(input.ref.namespace),
+    sanitizeBranchSegment(input.ref.image),
+    sanitizeBranchSegment(input.tag),
+  ].join("/");
+  const suffix = randomBytes(4).toString("hex");
+  const branch = `healthcheck/${segments}/${suffix}`;
+
+  const worktreePath = join(
+    `${repoPath}-wt`,
+    `${sanitizeBranchSegment(segments)}-${suffix}`,
+  );
+  await mkdir(dirname(worktreePath), { recursive: true });
+
+  const relPath = join(
+    input.ref.registry,
+    input.ref.namespace,
+    input.ref.image,
+    `${input.tag}.json`,
+  );
+
+  try {
+    await runGit(
+      [
+        "-C",
+        repoPath,
+        "worktree",
+        "add",
+        "-b",
+        branch,
+        worktreePath,
+        `origin/${base}`,
+      ],
+      repoPath,
+    );
+
+    const absPath = join(worktreePath, relPath);
+    await mkdir(dirname(absPath), { recursive: true });
+    await writeFile(absPath, stableStringify(input.healthcheck), "utf-8");
+
+    await runGit(["-C", worktreePath, "add", relPath], worktreePath);
+
+    // Detect whether anything actually changed vs the base branch.
+    let changed = false;
+    try {
+      await runGit(["-C", worktreePath, "diff", "--cached", "--quiet"]);
+      changed = false;
+    } catch {
+      changed = true;
+    }
+
+    if (!changed) {
+      return { branch, filePath: relPath, changed: false };
+    }
+
+    const verb = input.intent === "create" ? "Add" : "Update";
+    const subject = `${verb} HEALTHCHECK for ${input.ref.reference}:${input.tag}`;
+    const body = `Co-authored-by: ${input.user.name} <${input.user.email}>`;
+
+    await runGit(
+      [
+        "-C",
+        worktreePath,
+        "-c",
+        "user.name=Healthcheck Bot",
+        "-c",
+        "user.email=bot@healthcheck.help",
+        "-c",
+        "commit.gpgsign=false",
+        "commit",
+        "-m",
+        subject,
+        "-m",
+        body,
+      ],
+      worktreePath,
+    );
+
+    const pushUrl = getAuthenticatedPushUrl();
+    await runGit(
+      ["-C", worktreePath, "push", pushUrl, `${branch}:${branch}`],
+      worktreePath,
+    );
+
+    return { branch, filePath: relPath, changed: true };
+  } finally {
+    // Always remove the worktree and its branch reference on cleanup; if the
+    // commit succeeded, the branch lives on the remote anyway.
+    try {
+      await runGit(
+        ["-C", repoPath, "worktree", "remove", "--force", worktreePath],
+        repoPath,
+      );
+    } catch (error) {
+      console.warn(
+        `[data-repository] failed to remove worktree ${worktreePath}:`,
+        error instanceof Error ? error.message : error,
+      );
+      await rm(worktreePath, { recursive: true, force: true }).catch(() => {});
+    }
+    try {
+      await runGit(["-C", repoPath, "branch", "-D", branch], repoPath);
+    } catch {
+      /* branch may not exist if worktree add failed early */
+    }
+  }
 }
