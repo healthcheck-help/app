@@ -34,7 +34,7 @@ jobs:
         run: deno install
 
       - name: Create Release Pull Request
-        uses: https://github.com/openscript/changesets-action@v1.8.3
+        uses: https://github.com/openscript/changesets-action@v1.8.4
         id: changesets
         with:
           version: deno task version
