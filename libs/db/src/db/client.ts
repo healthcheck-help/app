@@ -9,7 +9,7 @@ import * as schema from "./schema.ts";
  * The database is stored in the data directory at the workspace root.
  */
 export function getDefaultDbPath(): string {
-  return resolve(import.meta.dirname, "../../../../data/healthcheck.db");
+  return resolve(import.meta.dirname || ".", "../../../../data/healthcheck.db");
 }
 
 /**
@@ -63,9 +63,19 @@ export function createSqliteClient(databaseUrl?: string): Client {
  * Creates a Drizzle database connection backed by libSQL.
  * @param databaseUrl - Path or URL to the SQLite/libSQL database.
  */
-export function createDb(databaseUrl?: string): DB {
+export function createDb(databaseUrl?: string) {
   const client = createSqliteClient(databaseUrl);
   return drizzle(client, { schema });
 }
 
 export type DB = ReturnType<typeof createDb>;
+
+/**
+ * Shared database singleton. Reads DATABASE_URL from the environment,
+ * falling back to the default local SQLite path.
+ */
+export const db: DB = createDb(
+  (typeof Deno !== "undefined"
+    ? Deno.env.get("DATABASE_URL")
+    : process.env.DATABASE_URL) ?? undefined,
+);

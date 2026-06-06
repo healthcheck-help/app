@@ -1,12 +1,7 @@
 import { type Actions, fail, redirect } from "@sveltejs/kit";
 import { resolveWithLocale } from "$lib/routes";
 import { auth } from "$lib/server/auth";
-import {
-  createUser,
-  deleteUser,
-  getUsers,
-  updateUser,
-} from "$lib/server/users";
+import { createUser, deleteUser, getUsers, updateUser } from "$lib/server/db";
 
 export async function load() {
   return {

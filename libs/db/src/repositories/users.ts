@@ -1,6 +1,6 @@
-import { users } from "@healthcheck/db/schema";
 import { eq } from "drizzle-orm";
-import { db } from "$lib/server/db";
+import { db } from "../db/client.ts";
+import { users } from "../db/schema.ts";
 
 export async function createUser(name: string, email: string) {
   const result = await db.insert(users).values({ name, email }).returning();
