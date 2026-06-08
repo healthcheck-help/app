@@ -1,6 +1,4 @@
 {
-  "name": "@healthcheck/core",
-  "version": "0.0.1",
   "exports": {},
   "tasks": {
     "dev": "vite dev --host",

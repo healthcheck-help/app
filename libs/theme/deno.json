@@ -1,14 +1,8 @@
 {
-  "name": "@healthcheck/theme",
-  "version": "0.0.1",
   "tasks": {
     "dev": "svelte-kit sync && svelte-package --watch --input=src",
     "build": "svelte-kit sync && svelte-package --input=src",
     "check-types": "svelte-check --tsconfig ./tsconfig.json"
-  },
-  "exports": {
-    ".": "./src/index.ts",
-    "./index.css": "./src/index.css"
   },
   "imports": {
     "svelte": "npm:svelte@^5.56.2",

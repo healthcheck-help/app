@@ -1,7 +1,8 @@
 {
-  "name": "@healthcheck/repo",
-  "version": "0.0.1",
   "exports": {
     ".": "./src/index.ts"
+  },
+  "imports": {
+    "typebox": "npm:typebox@^1.2.2"
   }
 }
