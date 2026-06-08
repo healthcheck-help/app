@@ -39,6 +39,9 @@ jobs:
       - name: Check code
         run: deno task check
 
+      - name: Run tests
+        run: deno task test:all
+
   end-to-end-tests:
     name: Run end-to-end tests
     if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, 'from changeset-release/') }}
@@ -77,4 +80,4 @@ jobs:
         run: cp apps/core/.env.example apps/core/.env.local
 
       - name: Run end-to-end tests
-        run: deno task test:e2e
+        run: deno task test:e2e:all

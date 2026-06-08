@@ -5,7 +5,8 @@
     "./libs/auth",
     "./libs/db",
     "./libs/i18n",
-    "./libs/theme"
+    "./libs/theme",
+    "./libs/repo"
   ],
   "tasks": {
     "build": "deno task -f @healthcheck/theme build && deno task -f @healthcheck/core build",
@@ -17,8 +18,8 @@
     "check": "biome check .",
     "check:fix": "biome check --fix .",
     "tag": "changeset tag",
-    "test:e2e": "deno task -f @healthcheck/core test:e2e",
-    "test": "deno task -f @healthcheck/core test",
+    "test:e2e:all": "deno task -r test:e2e",
+    "test:all": "deno task -r test",
     "version": "changeset version && deno install",
     "changeset": "changeset"
   },

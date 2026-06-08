@@ -1,8 +1,12 @@
 {
+  "tasks": {
+    "test": "deno test"
+  },
   "exports": {
     ".": "./src/index.ts"
   },
   "imports": {
+    "@std/assert": "jsr:@std/assert@1",
     "typebox": "npm:typebox@^1.2.2"
   }
 }
