@@ -17,6 +17,7 @@
     "lint": "biome lint .",
     "check": "biome check .",
     "check:fix": "biome check --fix .",
+    "biome": "biome",
     "tag": "changeset tag",
     "test:e2e:all": "deno task -r test:e2e",
     "test:all": "deno task -r test",

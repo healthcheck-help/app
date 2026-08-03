@@ -47,7 +47,7 @@ jobs:
     if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, 'from changeset-release/') }}
     runs-on: srv-obin-ch_ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.60.0-noble
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
     env:
       PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
 

@@ -137,22 +137,18 @@
     {...rest}
   />
   {#if isOpen}
-    <ul id="search-results" role="listbox" class="results">
+    <ul id="search-results" class="results">
       {#if hasError}
-        <li class="empty" role="option" aria-selected="false">
+        <li class="empty">
           {$messages.error}
         </li>
       {:else if results.length === 0 && !isLoading}
-        <li class="empty" role="option" aria-selected="false">
+        <li class="empty">
           {$messages.noResults}
         </li>
       {:else}
         {#each results as result, index (result.reference)}
-          <li
-            role="option"
-            aria-selected={index === selectedIndex}
-            class:selected={index === selectedIndex}
-          >
+          <li class:selected={index === selectedIndex}>
             <a
               href={resolveExploreWithCurrentLocale(result)}
               onmousedown={(event) => {
