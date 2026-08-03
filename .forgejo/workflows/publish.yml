@@ -47,7 +47,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push tags
-        run: git push --follow-tags
+        run: git push origin --tags
 
       - name: Plan container images to publish
         id: images
