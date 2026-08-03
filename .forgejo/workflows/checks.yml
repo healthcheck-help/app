@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  lint:
+  checks:
     name: Run checks
     if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, 'from changeset-release/') }}
     runs-on: srv-obin-ch_ubuntu-latest
@@ -78,6 +78,9 @@ jobs:
 
       - name: Copy environment variables
         run: cp apps/core/.env.example apps/core/.env.local
+
+      - name: Build
+        run: deno task build
 
       - name: Run end-to-end tests
         run: deno task test:e2e:all
