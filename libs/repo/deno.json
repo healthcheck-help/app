@@ -1,5 +1,6 @@
 {
   "tasks": {
+    "test:unit": "deno test",
     "test": "deno test"
   },
   "exports": {

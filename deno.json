@@ -20,6 +20,7 @@
     "biome": "biome",
     "tag": "changeset tag",
     "test:e2e:all": "deno task -r test:e2e",
+    "test:unit:all": "deno task -r test:unit",
     "test:all": "deno task -r test",
     "version": "changeset version && deno install",
     "changeset": "changeset"

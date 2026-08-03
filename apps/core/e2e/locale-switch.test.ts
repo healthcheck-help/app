@@ -19,5 +19,7 @@ test("keeps selected locale when navigating back to home via logo", async ({
   await page.locator("header #title").click();
 
   await expect(page).toHaveURL("/fr-CH");
-  await expect(page.locator("h1")).toHaveText("Bienvenue sur healthcheck.help");
+  await expect(page.locator("h1")).toHaveText(
+    "Comment demander à vos conteneurs: «Tout va bien?»",
+  );
 });
