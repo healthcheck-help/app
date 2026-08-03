@@ -5,14 +5,14 @@
     "check-types": "svelte-check --tsconfig ./tsconfig.json"
   },
   "imports": {
-    "svelte": "npm:svelte@^5.56.2",
+    "svelte": "npm:svelte@^5.56.8",
     "bits-ui": "npm:bits-ui@^2.18.1",
-    "@fontsource-variable/fraunces": "npm:@fontsource-variable/fraunces@^5.2.9",
-    "@fontsource-variable/readex-pro": "npm:@fontsource-variable/readex-pro@^5.2.11",
+    "@fontsource-variable/fraunces": "npm:@fontsource-variable/fraunces@^5.3.0",
+    "@fontsource-variable/readex-pro": "npm:@fontsource-variable/readex-pro@^5.3.0",
     "@sveltejs/kit": "npm:@sveltejs/kit@^2.63.0",
     "@sveltejs/package": "npm:@sveltejs/package@^2.5.8",
-    "@sveltejs/vite-plugin-svelte": "npm:@sveltejs/vite-plugin-svelte@^7.1.2",
-    "svelte-check": "npm:svelte-check@^4.6.0",
-    "vite": "npm:vite@^8.0.16"
+    "@sveltejs/vite-plugin-svelte": "npm:@sveltejs/vite-plugin-svelte@^7.2.0",
+    "svelte-check": "npm:svelte-check@^4.7.4",
+    "vite": "npm:vite@^8.2.0"
   }
 }

@@ -24,10 +24,10 @@
     "changeset": "changeset"
   },
   "imports": {
-    "@biomejs/biome": "npm:@biomejs/biome@^2.4.16",
-    "@changesets/cli": "npm:@changesets/cli@^2.31.0",
-    "@iconify-json/tabler": "npm:@iconify-json/tabler@^1.2.35",
-    "@types/node": "npm:@types/node@^25.9.2",
+    "@biomejs/biome": "npm:@biomejs/biome@^2.5.6",
+    "@changesets/cli": "npm:@changesets/cli@^2.31.1",
+    "@iconify-json/tabler": "npm:@iconify-json/tabler@^1.2.38",
+    "@types/node": "npm:@types/node@^26.1.2",
     "unplugin-icons": "npm:unplugin-icons@^23.0.1"
   },
   "allowScripts": [
